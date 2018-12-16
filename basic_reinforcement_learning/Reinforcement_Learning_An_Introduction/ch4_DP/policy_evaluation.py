@@ -3,7 +3,7 @@
 from grid_world import GridworldEnv
 import numpy as np
 
-def DP(env, policy, gamma, theta):
+def Policy_Evaluation(env, policy, state_value, gamma, theta):
 	while True:
 		delta = 0
 		for s in range(env.nS):
@@ -17,24 +17,14 @@ def DP(env, policy, gamma, theta):
 			break
 	return(np.array(state_value).reshape(env.shape))
 
-env = GridworldEnv()
-state_value = np.zeros(env.nS)
-policy = np.ones([env.nS, env.nA])/env.nA
-gamma = 1.0
-theta = 0.00001
+if __name__ == '__main__':
+	env = GridworldEnv()
+	state_value = np.zeros(env.nS)
+	policy = np.ones([env.nS, env.nA])/env.nA
+	gamma = 1.0
+	theta = 0.00001
 
-state_value = DP(env, policy, gamma, theta)
-
-print("===== Training Finished =====")
-print(state_value)
-
-
-print("===== Play game =====")
-
-s = env.reset()
-for i in range(10):
-	a = np.random.choice(env.nA, p=policy[s])
-	next_s, r, done, _ = env.step(a)
-	print()
-	s = next_s
-	env._render()
+	print("===== Training Started =====")
+	state_value = Policy_Evaluation(env, policy, state_value, gamma, theta)
+	print("===== Training Finished =====")
+	print(state_value)

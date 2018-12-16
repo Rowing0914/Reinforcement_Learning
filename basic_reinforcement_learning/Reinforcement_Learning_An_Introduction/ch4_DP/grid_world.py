@@ -1,5 +1,7 @@
 # Game is borrowed from this repo!!
 # https://github.com/dennybritz/reinforcement-learning/blob/master/DP/Policy%20Evaluation%20Solution.ipynb
+# Usage: $python3 grid_world.py
+
 import numpy as np
 import sys
 from gym.envs.toy_text import discrete
@@ -110,3 +112,16 @@ class GridworldEnv(discrete.DiscreteEnv):
                 outfile.write("\n")
 
             it.iternext()
+
+if __name__ == '__main__':
+    env = GridworldEnv()
+    state_value = np.zeros(env.nS)
+    policy = np.ones([env.nS, env.nA])/env.nA
+    print("===== Play game =====")
+    s = env.reset()
+    for i in range(10):
+      a = np.random.choice(env.nA, p=policy[s])
+      next_s, r, done, _ = env.step(a)
+      print()
+      s = next_s
+      env._render()
