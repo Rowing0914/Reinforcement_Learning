@@ -4,7 +4,8 @@ from grid_world import GridworldEnv
 import numpy as np
 from policy_evaluation import Policy_Evaluation
 
-def Policy_Improvement(env, policy, state_value, gamma):
+def Policy_Improvement(env, policy, state_value, gamma, theta):
+	state_value = Policy_Evaluation(env, policy, state_value, gamma, theta).flatten()
 	policy_stable = True
 	while policy_stable:
 		for s in range(env.nS):
@@ -27,8 +28,7 @@ if __name__ == '__main__':
 	theta = 0.00001
 
 	print("===== Training Started =====")
-	state_value = Policy_Evaluation(env, policy, state_value, gamma, theta)
-	policy = Policy_Improvement(env, policy, state_value.flatten(), gamma)
+	policy = Policy_Improvement(env, policy, state_value, gamma, theta)
 	print("===== Training Finished =====")
 	print(policy)
 	print(state_value)
