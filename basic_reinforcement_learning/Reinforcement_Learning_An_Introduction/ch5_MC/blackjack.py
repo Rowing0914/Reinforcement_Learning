@@ -1,3 +1,6 @@
+# Reference
+# https://github.com/dennybritz/reinforcement-learning/blob/master/lib/envs/blackjack.py
+
 import gym
 from gym import spaces
 from gym.utils import seeding
