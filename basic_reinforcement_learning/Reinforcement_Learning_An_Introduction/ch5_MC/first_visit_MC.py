@@ -1,3 +1,6 @@
+# 5.1 Monte Carlo Prediction
+# First-visit MC prediction, for estimating state-value
+
 from collections import defaultdict
 from blackjack import BlackjackEnv, print_observation
 import numpy as np
@@ -11,7 +14,7 @@ def First_Visit_MC(env, state_value, policy, discount_factor=1.0, num_episodes=1
 		experience = []
 		observation = env.reset()
 		for t in range(100):
-			action = strategy(observation)
+			action = policy(observation)
 			next_observation, reward, done, _ = env.step(action)
 			experience.append((observation, action, reward))
 			observation = next_observation
