@@ -1,5 +1,5 @@
-# 5.3 Monte Carlo Control
-# Monte Carlo ES (Exploring Starts) with first visit constraint
+# 5.6 Incremental Implementation
+# Off-policy MC prediction
 # reference: https://github.com/dennybritz/reinforcement-learning/blob/master/MC/MC%20Control%20with%20Epsilon-Greedy%20Policies%20Solution.ipynb
 
 from collections import defaultdict
@@ -14,7 +14,7 @@ def make_epsilon_greedy_policy(Q, epsilon, nA):
         return A
     return policy
 
-def First_Visit_MC_ES(env, action_value, discount_factor=1.0, num_episodes=1000):
+def Off_Policy_MC(env, action_value, discount_factor=1.0, num_episodes=1000):
 	Returns = defaultdict(float)
 	Returns_count = defaultdict(float)
 	policy = make_epsilon_greedy_policy(action_value, discount_factor, env.nA)
@@ -55,5 +55,5 @@ if __name__ == '__main__':
 	action_value = defaultdict(lambda: np.zeros(env.action_space.n))
 	discount_factor = 1.0
 	num_episodes = 100
-	action_value, policy = First_Visit_MC_ES(env, action_value, discount_factor=1.0, num_episodes=num_episodes)
+	action_value, policy = Off_Policy_MC(env, action_value, discount_factor=1.0, num_episodes=num_episodes)
 	print(action_value)
