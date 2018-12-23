@@ -6,16 +6,16 @@ This is the notes for the research paper below
 
 ## Notes
 
-![1](https://github.com/Rowing0914/safe_reinforcement_learning/blob/master/A_comprehensive_survey_Safe_RL/images/1.JPG)
+![1](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/1.JPG)
 
-![2](https://github.com/Rowing0914/safe_reinforcement_learning/blob/master/A_comprehensive_survey_Safe_RL/images/2.JPG)
+![2](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/2.JPG)
 
-![3](https://github.com/Rowing0914/safe_reinforcement_learning/blob/master/A_comprehensive_survey_Safe_RL/images/3.JPG)
+![3](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/3.JPG)
 
-![4](https://github.com/Rowing0914/safe_reinforcement_learning/blob/master/A_comprehensive_survey_Safe_RL/images/4.JPG)
+![4](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/4.JPG)
 
-![5](https://github.com/Rowing0914/safe_reinforcement_learning/blob/master/A_comprehensive_survey_Safe_RL/images/5.JPG)
+![5](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/5.JPG)
 
-![6](https://github.com/Rowing0914/safe_reinforcement_learning/blob/master/A_comprehensive_survey_Safe_RL/images/6.JPG)
+![6](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/6.JPG)
 
-![7](https://github.com/Rowing0914/safe_reinforcement_learning/blob/master/A_comprehensive_survey_Safe_RL/images/7.JPG)
+![7](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/7.JPG)
