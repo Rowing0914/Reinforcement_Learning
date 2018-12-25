@@ -1,8 +1,12 @@
 # Following the algo in section 4.3 Policy Iteration
-
-from grid_world import GridworldEnv
-import numpy as np
 from policy_evaluation import Policy_Evaluation
+import sys
+import numpy as np
+
+if "../" not in sys.path:
+    sys.path.append("../")
+
+from envs.grid_world import GridworldEnv
 
 def Policy_Improvement(env, policy, state_value, gamma, theta):
 	state_value = Policy_Evaluation(env, policy, state_value, gamma, theta).flatten()

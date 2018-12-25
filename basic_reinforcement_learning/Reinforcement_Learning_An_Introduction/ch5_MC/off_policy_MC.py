@@ -3,8 +3,12 @@
 # reference: https://github.com/dennybritz/reinforcement-learning/blob/master/MC/Off-Policy%20MC%20Control%20with%20Weighted%20Importance%20Sampling%20Solution.ipynb
 
 from collections import defaultdict
-from blackjack import BlackjackEnv, print_observation
 import numpy as np
+import sys
+if "../" not in sys.path:
+    sys.path.append("../")
+
+from envs.blackjack import BlackjackEnv, print_observation
 
 def make_epsilon_greedy_policy(Q, epsilon, nA):
 	def target_policy(observation):

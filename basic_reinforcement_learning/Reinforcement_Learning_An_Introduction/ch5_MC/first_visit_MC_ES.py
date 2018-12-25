@@ -3,8 +3,12 @@
 # reference: https://github.com/dennybritz/reinforcement-learning/blob/master/MC/MC%20Control%20with%20Epsilon-Greedy%20Policies%20Solution.ipynb
 
 from collections import defaultdict
-from blackjack import BlackjackEnv, print_observation
 import numpy as np
+import sys
+if "../" not in sys.path:
+    sys.path.append("../")
+
+from envs.blackjack import BlackjackEnv, print_observation
 
 def make_epsilon_greedy_policy(Q, epsilon, nA):
     def policy(observation):

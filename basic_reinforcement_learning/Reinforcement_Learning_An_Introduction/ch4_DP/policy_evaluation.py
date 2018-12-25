@@ -1,7 +1,12 @@
 # Following the algo in section 4.1 Policy Evaluation (Prediction)
 
-from grid_world import GridworldEnv
+import sys
 import numpy as np
+
+if "../" not in sys.path:
+    sys.path.append("../")
+
+from envs.grid_world import GridworldEnv
 
 def Policy_Evaluation(env, policy, state_value, gamma, theta):
 	while True:

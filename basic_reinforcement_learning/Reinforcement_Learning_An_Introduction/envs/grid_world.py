@@ -1,6 +1,4 @@
-# Game is borrowed from this repo!!
-# https://github.com/dennybritz/reinforcement-learning/blob/master/DP/Policy%20Evaluation%20Solution.ipynb
-# Usage: $python3 grid_world.py
+# https://github.com/dennybritz/reinforcement-learning/blob/master/lib/envs/gridworld.py
 
 import numpy as np
 import sys
@@ -16,12 +14,16 @@ class GridworldEnv(discrete.DiscreteEnv):
     Grid World environment from Sutton's Reinforcement Learning book chapter 4.
     You are an agent on an MxN grid and your goal is to reach the terminal
     state at the top left or the bottom right corner.
+
     For example, a 4x4 grid looks as follows:
+
     T  o  o  o
     o  x  o  o
     o  o  o  o
     o  o  o  T
+
     x is your position and T are the two terminal states.
+
     You can take actions in each direction (UP=0, RIGHT=1, DOWN=2, LEFT=3).
     Actions going off the edge leave you in your current state.
     You receive a reward of -1 at each step until you reach a terminal state.
@@ -115,13 +117,8 @@ class GridworldEnv(discrete.DiscreteEnv):
 
 if __name__ == '__main__':
     env = GridworldEnv()
-    state_value = np.zeros(env.nS)
-    policy = np.ones([env.nS, env.nA])/env.nA
-    print("===== Play game =====")
-    s = env.reset()
-    for i in range(10):
-      a = np.random.choice(env.nA, p=policy[s])
-      next_s, r, done, _ = env.step(a)
-      print()
-      s = next_s
-      env._render()
+
+    for i_episode in range(20):
+        observation = env.reset()
+        for t in range(100):
+            print(env.step(env.action_space.sample()))
