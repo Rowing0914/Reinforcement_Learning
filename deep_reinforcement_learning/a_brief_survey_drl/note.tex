@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{biblatex}
+\addbibresource{paper.bib}
+
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+
+\newcommand{\argmin}{\arg\!\min}
+\newcommand{\argmax}{\arg\!\max}
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+\title{Review: A Brief Survey of Deep Reinforcement Learning}
+\author{Norio Kosaka}
+\date{December 2018}
+
+\begin{document}
+
+\maketitle
+
+\section{Profile of the paper}
+\begin{itemize}
+    \item Title: A Brief Survey of Deep Reinforcement Learning
+    \item Authors: Kai Arulkumaran, Marc Peter Deisenroth, Miles Brundage, Anil Anthony Bharath
+    \item Published Year: Sep 2017
+\end{itemize}
+
+\section{Sections in the paper}
+\begin{enumerate}
+    \item Introduction
+    \item Reward-driven Behaviour
+    \begin{itemize}
+        \item Markov Decision Processes
+        \item Challenges in RL
+    \end{itemize}
+    \item Reinforcement Learning algorithms
+    \begin{itemize}
+        \item Value Functions
+        \item Sampling
+        \item Policy Search
+        \item Planning and Learning
+        \item The Rise of DRL
+    \end{itemize}
+    \item Value Functions
+    \begin{itemize}
+        \item Function Approximation and the DQN
+        \item Q-Function Modifications
+    \end{itemize}
+    \item Policy Search
+    \begin{itemize}
+        \item Backpropagation through Stochastic Functions
+        \item Compounding Errors
+        \item Actor-Critic Methods
+    \end{itemize}
+    \item Current Research and Challenges
+    \begin{itemize}
+        \item Model-based RL
+        \item Exploration vs. Exploitation
+        \item Hierarchical RL
+        \item Imitation Learning and Inverse RL
+        \item Memory and Attention
+        \item Transfer Learning
+        \item Benchmarks
+    \end{itemize}
+    \item Conclusions: Beyond Pattern Recognition
+\end{enumerate}
+
+\section{Abstract}
+This survey covers central algorithms in Deep Reinforcement Learning(DRL).
+
+\section{Introduction}
+The two principle properties of \textit{Deep Learning}, which are \textbf{function approximation} and \textbf{representation learning}, help RL to address to the bigger scale problems. Among recent works, they have chosen two breakthroughs;
+
+\begin{itemize}
+    \item Kickstarting the revolution in DRL: Development of DQN that could learn to play a range of Atari 2600 video games at a superhuman level.
+    \item Development of a hybrid DRL: AlphaGo defeated a human world champion in \textit{Go}.
+\end{itemize}
+And they have showcased some of real-world applications as follows:
+
+\begin{itemize}
+    \item classic Atari 2600 video games
+    \item TORCS car racing simulator
+    \item Robotics arm control
+    \item wheeled mobile robot control
+    \item Image caption trained by utilising reinforcement learning approach
+\end{itemize}
+
+\section{Reward-driven Behaviour}
+Before jumping into the contributions of deep neural networks to RL, they have introduced the field of RL in general.
+
+\begin{itemize}
+    \item MDP
+    \item Challenges in RL
+\end{itemize}
+
+\section{Reinforcement Learning Algorithms}
+In this section, they have briefly reviewed some aspects of RL following their categorisation of RL as follows:
+
+\begin{itemize}
+    \item \textbf{Value Functions}: state-value function, state-action-value function, dynamic programming, SARSA, TD, policy iteration(policy evaluation + policy improvement)
+    \item \textbf{Sampling}: importance sampling, Advantage function
+    \item \textbf{Policy Search}: gradient-free methods, gradient-based methods, policy gradient, actor-critic methods
+    \item \textbf{Planning and Learning}: model-based RL, model-free RL
+    \item \textbf{The Rise of DRL}: backpropagation, gradient vanishing problem in long-term
+\end{itemize}
+
+\section{Value Functions}
+One of the earliest success in RL agents is \textbf{TD-Gammon}, which combined TD and neural network.
+
+\begin{itemize}
+    \item \textbf{Function Approximation and the DQN}: it is based on NFQ(neural fitted Q iteration) and involved two techniques(experience replay and target network)
+    \item \textbf{Q-Function Modifications}: Double-Q learning
+\end{itemize}
+
+\section{Policy Search}
+\begin{itemize}
+    \item Backpropagation through Stochastic Functions: \textit{REINFORCE}, hard attention, stochastic value gradients(SVGs)
+    \item Compounding Errors: guided policy search(GPS), trust region using Kullback-Leibler(KL) divergence, TRPO(trust region policy optimisation), GAE(generalised advantage estimation), PPO(proximal policy optimisation)
+    \item Actor-Critic Methods: DPG(deterministic policy gradients), DDPG(deep DPG), A3C, A2C, Gorilla for parallel computation.
+\end{itemize}
+
+\section{Current Research And Challenges}
+\begin{itemize}
+    \item Model-based RL: successor representation(SR)
+    \item Exploration vs. Exploitation: Bootstrapped DQN, UCB(Upper confidence bound)
+    \item Hierarchical RL: top-level policy, high-level options, primitive actions
+    \item Imitation Learning and Inverse RL: behavioural cloning, IRL(is to estimate an unknown reward function from observed trajectories that characterise a desired solution), generative adversarial imitation learning(GAIL)
+    \item MARL
+    \item Memory and Attention: it converts DQN into an RNN, which allows the network to better deal with POMDPs by integrating information over long time periods, deep attention reccurent Q-network(DARQN), Memory Q-network(MQN)
+    \item Transfer Learning
+    \item Benchmarks: standard benchmarks are Cartpole and Mountain Car, Atari2600, VizDoom, Facebook's TorchCraft, Deepmind's StarCraft \rom{2} and Quake \rom{3} Arena first-person shooter engine, Microsoft's Project Malmo, OpenAI Gym.
+\end{itemize}
+
+\end{document}
