@@ -81,7 +81,24 @@
       \theta_{i+1} = \alpha_0 \pi^*(s) + \Sigma^{i+1}_{j=1} \alpha_j \pi(s, \theta_j)
       $$
 
-      - A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning Stephane Ross, Geoffrey J. Gordon, J. Andrew Bagnell, 2011
+      - A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning by Stephane Ross, Geoffrey J. Gordon, J. Andrew Bagnell, 2011
+
+  - **Safe Imitation learning** (Concept of safety in imitation learning)
+
+    - $ || \pi(s_t, \theta) - \pi^*(s_t) || \leq \epsilon$ : Query-Efficient Imitation Learning for End-to-End Autonomous Driving by Jiakai Zhang, Kyunghyun Cho, AAAI, 2017
+    - $Var[\pi(s_t, \theta)] \leq \gamma$ : EnsembleDAgger: A Bayesian Approach to Safe Imitation Learning by Kunal Menda, Katherine Driggs-Campbell, Mykel J. Kochenderfer, arXiv2018
+
+  - Prior Knowledge as backup for learning: to hold the safety at the early stage of learning process
+
+    - Provably safe and robust learning-based model predictive control by A. Aswani, H. Gonzalez, S.S. Satry, C.Tomlin, Automatica, 2013
+    - Safe Reinforcement Learning via Shielding by M. Alshiekh, R. Bloem, R. Ehlers, B. Könighofer, S. Nickum, U. Topcu, AAAI, 2018
+    - Linear Model Predictive Safety Certification for Learning-based Control by K.P. Wabersich, M.N. Zeilinger, CDC, 2018
+    - Safe Exploration of State and Action Spaces in Reinforcement Learning by J. Garcia, F. Fernandez, JAIR, 2012
+    - Safe Exploration in Continuous Action Spaces by G. Dalai, K. Dvijotham, M. Veccerik, T. Hester, C. Paduraru, Y. Tassa, arXiv, 2018
+
+
+
+
 
   - Acting safely in unknown environments
 
@@ -201,3 +218,84 @@
 - Conclusions
 
   - We showed that SMILe works better in practice than the traditional approach on two challenging tasks. 
+
+#### [Query-Efficient Imitation Learning for End-to-End Autonomous Driving by Jiakai Zhang, Kyunghyun Cho, AAAI, 2017](https://arxiv.org/pdf/1605.06450.pdf)
+
+- Abstract
+  - One way to approach end-to-end autonomous driving is to learn a policy function that maps from a sensory input, such as an image frame from a front-facing camera, to a driving action, by imitating an expert driver, or a reference policy. However, A policy function trained in this way however is known to suffer from unexpected behaviours due to the mismatch between the states reachable by the reference policy and trained policy functions. In this paper, we propose an extension of the DAgger, called SafeDAgger, that is query-efficient and more suitable for end-to-end autonomous driving.
+- Proposal
+  - In this paper, we propose an extension of the DAgger, called SafeDAgger, that is query-efficient and more suitable for end-to-end autonomous driving. And we first introduced a safety policy which prevents a primary policy from falling into a dangerous state by automatically switching between a reference policy and the primary policy without querying the reference policy
+- Experiments
+  - We evaluate the proposed SafeDAgger in a car racing simulator and show that it indeed requires less queries to a reference policy. 
+- Conclusions
+  - We observe a significant speed up in convergence, which we conjecture to be due to the effect of automated curriculum learning. The extensive experiments on simulated autonomous driving showed that the SafeDAgger not only queries a reference policy less but also trains a primary policy more efficiently
+
+#### [EnsembleDAgger: A Bayesian Approach to Safe Imitation Learning by Kunal Menda, Katherine Driggs-Campbell, Mykel J. Kochenderfer, arXiv2018](https://arxiv.org/pdf/1807.08364.pdf)
+
+- Abstract
+  - While imitation learning is often used in robotics, this approach often suffers from data mismatch and compounding errors. DAgger is an iterative algorithm that addresses these issues by aggregating training data from both the expert and novice policies, but does not consider the impact of safety. We present a probabilistic extension to DAgger, which attempts to quantify the confidence of the novice policy as a proxy for safety. Our method, EnsembleDAgger, approximates a GP using an ensemble of neural networks. Using the variance as a measure of confidence, we compute a decision rule that captures how much we doubt the **novice** (the opposite position of the experts), thus determining when it is safe to allow the novice to act. 
+- Proposal
+  - EnsembleDAgger, approximates a GP using an ensemble of neural networks. Using the variance as a measure of confidence, we compute a decision rule that captures how much we doubt the **novice** (the opposite position of the experts), thus determining when it is safe to allow the novice to act. And we aim to maximise the novice’s share of actions, while constraining the probability of failure.
+- Experiments
+  - they examined their approach on an inverted pendulum and in the MuJoCo HalfCheetah environment.
+- Conclusions
+  - To avoid requiring precise knowledge of safety, we assume the risk of a state to be inversely related to the size of the perturbation to an expert’s action that it can accept without compromising safety.
+    - discrepancy rule: weighted coin-flip that decides whether the novice acts in the VANILLA-DAGGER decision rule.
+    - doubt rule: the novice proposes an action that is bounded in its deviation from the expert’s choice of action, as proposed by SAFE-DAGGER* [11], but also must exhibit low variance in its choice.
+  - We found that the doubt rule effectively constrains the novice to act only in states it is familiar with, i.e. states that are within some neighbourhood of states labelled in D, while the discrepancy rule haphazardly allows the novice to act in states where there is chance agreement between their actions. Though the doubt rule alone
+    is shown to be superior to the discrepancy rule alone, there exist hyperaparameter settings in which the conjunction of the rules is better than either individually.
+
+#### [Provably safe and robust learning-based model predictive control by A. Aswani, H. Gonzalez, S.S. Satry, C.Tomlin, Automatica, 2013](https://arxiv.org/pdf/1107.2487.pdf)
+
+- Abstract
+  - Controller design faces a trade-off between robustness and performance. This paper describes a learning-based model predictive control (LBMPC) scheme that provides deterministic guarantees on robustness, while statistical identification tools are used to identify richer models of the system in order to improve performance. the benefits of this framework are that it handles state and input constraints, optimises system performance with respect to a cost function, and can be designed to use a wide variety of parametric or non-parametric statistical tools. The main insight of LBMPC is that safety and performance can be decoupled under reasonable conditions in an optimisation framework by maintaining two models of the system. The first is an approximate model with bounds on its uncertainty, and the second model is updated by statistical methods. LBMPC improves performance by choosing inputs that minimise a cost subject to the learned dynamics, and it ensures safety and robustness by checking whether these same inputs keep the approximate model stable when it is subject to uncertainty. Furthermore, we show that if the system is sufficiently excited, then the LBMPC control action probabilistically converges to that of an MPC computed using the true dynamics.
+- Proposal
+  - LBMPC improves performance by choosing inputs that minimise a cost subject to the learned dynamics, and it ensures safety and robustness by checking whether these same inputs keep the approximate model stable when it is subject to uncertainty.
+- Experiments
+  - Energy-efficient building automation
+  - High Performance Quadrotor Helicopter Flight
+  - Example: Moore-Greizer Compressor Model
+- Conclusions
+  - LBMPC uses a linear model with bounds on its uncertainty to construct invariant sets that provide deterministic guarantees on robustness and safety. A simulation shows that LBMPC can improve
+    over linear MPC, and experiments on testbeds show that such improvement translates to real systems
+
+
+
+#### [Safe Reinforcement Learning via Shielding by M. Alshiekh, R. Bloem, R. Ehlers, B. Könighofer, S. Nickum, U. Topcu, AAAI, 2018](https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/download/17211/16534)
+
+- Abstract
+  - We introduce a new approach to learn optimal policies while enforcing properties expressed in **temporal logic**. To this end, given the temporal logic specification that is to be obeyed by the learning system, we propose to synthesise a reactive system called a **shield** (a *correct-by-construction reactive system*). The **shield** monitors the actions from the learner and corrects them only if the chosen action causes a violation of the specification.
+- Proposal
+  - The method is based on shielding the decisions of the underlying learning algorithm from violating the specification. We proposed an algorithm for the automated synthesis of shields for given temporal logic specifications.
+- Experiments
+  - (1) a robot in a grid world, (2) a self-driving car scenario, (3) the water tank scenario, and (4) the pacman example.
+- Conclusions
+  - We demonstrated the use of shielded learning on several RL scenarios. In all of them, the learning performance of the shielded agents improved compared to the unshielded case. The main downside of our approach is that in order to prevent the learner from making unsafe actions, some approximate model of when which action is unsafe needs to be available. Our experiments show, however, that in applications in which safe learning is needed, the effort to construct an abstraction is well-spent, as our approach not only makes learning safe, but also shows great promise of improving learning performance.
+
+
+
+#### Linear Model Predictive Safety Certification for Learning-based Control by K.P. Wabersich, M.N. Zeilinger, CDC, 2018
+
+- Abstract
+- Proposal
+- Experiments
+- Conclusions
+
+
+
+#### Safe Exploration of State and Action Spaces in Reinforcement Learning by J. Garcia, F. Fernandez, JAIR, 2012
+
+- Abstract
+- Proposal
+- Experiments
+- Conclusions
+
+
+
+#### Safe Exploration in Continuous Action Spaces by G. Dalai, K. Dvijotham, M. Veccerik, T. Hester, C. Paduraru, Y. Tassa, arXiv, 2018
+
+- Abstract
+- Proposal
+- Experiments
+- Conclusions
+
