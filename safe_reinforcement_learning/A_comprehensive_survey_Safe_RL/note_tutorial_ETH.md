@@ -9,12 +9,12 @@
 
 ## Prerequisites
 
-### Bayesian Optimisation
+#### Bayesian Optimisation
 
-- **[Introduction to Bayesian Optimization by Javier Gonzalez Masterclass, 7-February, 2107 @Lancaster University](http://gpss.cc/gpmc17/slides/LancasterMasterclass_1.pdf)**
-- [**A Tutorial on Bayesian Optimization for Machine Learning by Ryan P. Adams School of Engineering and Applied Sciences Harvard University**](https://www.iro.umontreal.ca/~bengioy/cifar/NCAP2014-summerschool/slides/Ryan_adams_140814_bayesopt_ncap.pdf)
+- [Introduction to Bayesian Optimization by Javier Gonzalez Masterclass, 7-February, 2107 @Lancaster University](http://gpss.cc/gpmc17/slides/LancasterMasterclass_1.pdf)
+- [A Tutorial on Bayesian Optimization for Machine Learning by Ryan P. Adams School of Engineering and Applied Sciences Harvard University](https://www.iro.umontreal.ca/~bengioy/cifar/NCAP2014-summerschool/slides/Ryan_adams_140814_bayesopt_ncap.pdf)
 
-### Temporal Logic
+#### Temporal Logic
 
 - temporal logic tutorial in japanese
   http://hagi.is.s.u-tokyo.ac.jp/pub/staff/hagiya/kougiroku/jpf/modal-temporal.pdf
@@ -27,32 +27,41 @@
 - check CS 333: Safe and Interactive Robotics](https://dorsa.fyi/cs333/), and http://iliad.stanford.edu/
 - investigate her research, [Dorsa Sadigh](https://dorsa.fyi/)
 
+#### CMDP(Constrained MDP, Altman, 1999)
 
+- this forms the environment for safe RL
 
 
 
 ## Notes
 
-**Agenda**
+### Safety Definitions
 
-- Specifying safety requirements and quantify risk
-  - Examples(When do we need to consider the safety?) *details in Summary of reference
-    - Therapeutic Spinal Cord Stimulation
-      - Safe Exploration for Optimization with Gaussian Processes by Y. Sui, A. Gotovos, J. W. Burdick, A. Krause
-      - Stagewise Safe Bayesian Optimization with Gaussian Processes by Y. Sui, V. Zhuang, J. W. Burdick, Y. Yue
-    - Safe Controller Tuning
-      - Safe Controller Optimization for Quadrotors with Gaussian Processes by F. Berkenkamp, A. P. Schoellig, A. Krause, ICRA 2016
-  - Safety Criterion(have a look at **Bayesian optimisation** and **temporal logic** beforehand)
-    - specifying safety behaviour(safety is the similar concept as avoiding bad trajectories)
-      - $g(\{ s_t, a_t \}^N_{t=0} ) = g(\tau) > 0$ : Monitoring temporal properties of continuous signals by O. Maler, D. Nickovic, FT, 2004
-      - $g(\tau) = \min_{t=1:N} \Delta(s_t, a_t)$ : Safe Control under Uncertainty by D. Sadigh, A. Kapoor, RSS, 2016
-    - But the expected safety is not perfect rather misleading indication, since it averages the bad and good trajectories. So, we need to consider the range of the distribution of trajectories, e.g., the variance.
-    - Notion of safety
-      - Expected risk: $E[G]$
-      - Moment penalised: $E[e^{\tau G}]$
-      - Value at Risk: $VaR_{\delta}[G] = \inf \{ \epsilon \in R: p(G \leq \epsilon) \} \geq \delta $
-      - Conditional Value at Risk: $CVaR_{\delta}[G] = \frac{1}{\delta} \int^{\delta}_0 VaR_{\alpha}[G] d\alpha$
-      - Worst-case: $g(\tau) > 0 \ \forall_{\tau} \in \Gamma$
+#### Specifying safety requirements and quantify risk
+
+- Examples(When do we need to consider the safety?) *details in Summary of reference
+  - Therapeutic Spinal Cord Stimulation
+    - Safe Exploration for Optimization with Gaussian Processes by Y. Sui, A. Gotovos, J. W. Burdick, A. Krause
+    - Stagewise Safe Bayesian Optimization with Gaussian Processes by Y. Sui, V. Zhuang, J. W. Burdick, Y. Yue
+  - Safe Controller Tuning
+    - Safe Controller Optimization for Quadrotors with Gaussian Processes by F. Berkenkamp, A. P. Schoellig, A. Krause, ICRA 2016
+
+#### Safety Criterion
+
+** have a look at **Bayesian optimisation** and **temporal logic** beforehand
+
+- specifying safety behaviour(safety is the similar concept as avoiding bad trajectories)
+  - $g(\{ s_t, a_t \}^N_{t=0} ) = g(\tau) > 0$ : Monitoring temporal properties of continuous signals by O. Maler, D. Nickovic, FT, 2004
+  - $g(\tau) = \min_{t=1:N} \Delta(s_t, a_t)$ : Safe Control under Uncertainty by D. Sadigh, A. Kapoor, RSS, 2016
+- But the expected safety is not perfect rather misleading indication, since it averages the bad and good trajectories. So, we need to consider the range of the distribution of trajectories, e.g., the variance.
+- Notion of safety
+  - Expected risk: $E[G]$
+  - Moment penalised: $E[e^{\tau G}]$
+  - Value at Risk: $VaR_{\delta}[G] = \inf \{ \epsilon \in R: p(G \leq \epsilon) \} \geq \delta $
+  - Conditional Value at Risk: $CVaR_{\delta}[G] = \frac{1}{\delta} \int^{\delta}_0 VaR_{\alpha}[G] d\alpha$
+  - Worst-case: $g(\tau) > 0 \ \forall_{\tau} \in \Gamma$
+    - Robust Control
+    - Formal Verification
 
 - Acting safely in known environments
 
@@ -88,7 +97,7 @@
     - $ || \pi(s_t, \theta) - \pi^*(s_t) || \leq \epsilon$ : Query-Efficient Imitation Learning for End-to-End Autonomous Driving by Jiakai Zhang, Kyunghyun Cho, AAAI, 2017
     - $Var[\pi(s_t, \theta)] \leq \gamma$ : EnsembleDAgger: A Bayesian Approach to Safe Imitation Learning by Kunal Menda, Katherine Driggs-Campbell, Mykel J. Kochenderfer, arXiv2018
 
-  - Prior Knowledge as backup for learning: to hold the safety at the early stage of learning process
+  - **Prior Knowledge as backup for learning**: to hold the safety at the early stage of learning process but the thing is that Need to know what is unsafe in advance. Without learning, need significant prior knowledge. The learner does not know what’s happening!
 
     - Provably safe and robust learning-based model predictive control by A. Aswani, H. Gonzalez, S.S. Satry, C.Tomlin, Automatica, 2013
     - Safe Reinforcement Learning via Shielding by M. Alshiekh, R. Bloem, R. Ehlers, B. Könighofer, S. Nickum, U. Topcu, AAAI, 2018
@@ -96,13 +105,27 @@
     - Safe Exploration of State and Action Spaces in Reinforcement Learning by J. Garcia, F. Fernandez, JAIR, 2012
     - Safe Exploration in Continuous Action Spaces by G. Dalai, K. Dvijotham, M. Veccerik, T. Hester, C. Paduraru, Y. Tassa, arXiv, 2018
 
+  - **Overview of expected safety pipeline**
+
+    Using the sampled trajectory data, we divide it into two parts, a training set and test set. Subsequently, we apply CPO(Constrained Policy Optimisation by Joshua Achiam at el,. 2017) to the training stage and obtain a candidate policy, which is supposed to be examined on the prepared test set. Then combine the two policies aforementioned to safely operate the robot.
+
+    - High Confidence Policy Improvement by Philip S. Thomas, Georgios Theocharous, Mohammad Havamzadeh, ICML 2015
+    - Safe and efficient off-policy reinforcement learning by Remi Munos, Thomas Stepleton, Anna Harutyunyan, Marc G. Bellemare, NIPS, 2016
+    - Constrained Policy Optimisation by Joshua Achiam, David Held, Aviv Tamar, Pieter Abbeel, ICML, 2017
+
+### Summary of Safety Definitions
+
+- Reviewed safety definitions
+  - Stochastic: expected risk, moment penalised, VaR/CVaR
+  - Worst-case: formal verification, robust control
+- Confirmed how to safely initialise the prior knowledge
+- Reviewed a first method for safe learning in expectation
 
 
 
+### Explicit Safe Exploration
 
-  - Acting safely in unknown environments
 
-- Safe exploration (model-free and model-based)
 
 
 
@@ -274,7 +297,7 @@
 
 
 
-#### Linear Model Predictive Safety Certification for Learning-based Control by K.P. Wabersich, M.N. Zeilinger, CDC, 2018
+#### [Linear Model Predictive Safety Certification for Learning-based Control by K.P. Wabersich, M.N. Zeilinger, CDC, 2018](https://arxiv.org/pdf/1803.08552.pdf)
 
 - Abstract
 
@@ -288,23 +311,99 @@
 
 - Experiments
 
+  - they use some artificially and uniformly sampled dataset
+
 - Conclusions
 
+  - By relying on robust MPC methods, the presented concept is amenable for application to large-scale systems with similar offline computational complexity as e.g. ellipsoidal safe set approximations. 
 
 
-#### Safe Exploration of State and Action Spaces in Reinforcement Learning by J. Garcia, F. Fernandez, JAIR, 2012
+
+#### [Safe Exploration of State and Action Spaces in Reinforcement Learning by J. Garcia, F. Fernandez, JAIR, 2012](https://jair.org/index.php/jair/article/view/10789/25759)
 
 - Abstract
+  - While reinforcement learning is well-suited to domains with complex transition dynamics  and  high-dimensional state-action spaces, an additional challenge is posed by the need for safe and efficient exploration. Traditional exploration techniques are not particularly useful for solving dangerous tasks, where the trial and error process may lead to  the  selection  of  actions  whose  execution  in  some  states  may  result  in  damage  to  the learning system (or any other system). Consequently, when an agent begins an interaction with a dangerous and high-dimensional state-action space, an important question arises; namely, that of how to avoid (or at least minimise) damage caused by the exploration of the state-action space.  We introduce the **PI-SRL** algorithm which safely improves sub-optimal albeit robust behaviours for continuous state and action control tasks and which efficiently learns from the experience gained from the environment.  We evaluate the proposed method in  four  complex  tasks:   automatic  car  parking,  pole-balancing,  helicopter  hovering,  and business management.
 - Proposal
+  - **PI-SRL** algorithm which safely improves sub-optimal albeit robust behaviours for continuous state and action control tasks and which efficiently learns from the experience gained from the environment. 
 - Experiments
+  - We evaluate the proposed method in  four  complex  tasks:   automatic  car  parking,  pole-balancing,  helicopter  hovering,  and business management.
 - Conclusions
+  -  The main contributions of this algorithm are the definitions of a novel case-based risk function and a baseline behaviour for the safe exploration of  the  state-action  space.   The  use  of  the  case-based  risk  function  presented  is  possible inasmuch  as  the  policy  is  stored  as  a  case-base.
 
 
 
-#### Safe Exploration in Continuous Action Spaces by G. Dalai, K. Dvijotham, M. Veccerik, T. Hester, C. Paduraru, Y. Tassa, arXiv, 2018
+#### [Safe Exploration in Continuous Action Spaces by G. Dalai, K. Dvijotham, M. Veccerik, T. Hester, C. Paduraru, Y. Tassa, arXiv, 2018](https://arxiv.org/pdf/1801.08757.pdf)
 
 - Abstract
+  - We address the problem of deploying a reinforcement learning (RL) agent on a physical system such as a datacenter cooling unit or robot, where critical constraints must never be violated. Our
+    technique is to directly add to the policy a safety layer that analytically solves an action correction formulation per each state. The novelty of obtaining an elegant closed-form solution is attained due to a linearised model, learned on past trajectories consisting of arbitrary actions This is to mimic the real-world circumstances where data logs were generated with a behaviour policy that is implausible to describe mathematically; such cases render the known safety-aware off-policy methods inapplicable. We demonstrate the efficacy of our approach on new representative physics-based environments, and prevail where reward shaping fails by maintaining zero constraint violations.
+
 - Proposal
+
+  - we proposed a state-based action correction mechanism, which accomplishes the goal of zero-constraint-violations in tasks where the agent is constrained to a confined region.
+
+  ![wabersich_abs (https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/g_dalai18.png)
+
 - Experiments
+
+  - https://youtu.be/KgMvxVST-9U
+  - https://www.youtube.com/watch?v=yr6y4Mb1ktI&feature=youtu.be
+
 - Conclusions
 
+  - The resulting gain is not only in maintaining safety but also in enhanced performance in terms of reward. This suggests our method promotes more efficient exploration – it guides the exploratory actions in the direction of feasible policies. Since our solution is stand-alone and applied directly at the policy level, it is independent of the RL algorithm used and can be plugged into any other continuous control algorithm
+
+#### [High Confidence Policy Improvement by Philip S. Thomas, Georgios Theocharous, Mohammad Havamzadeh, ICML 2015](https://people.cs.umass.edu/~pthomas/papers/Thomas2015b.pdf)
+
+- Abstract
+  - We present a batch reinforcement learning (RL) algorithm that provides probabilistic guarantees about the quality of each policy that it proposes, and which has no hyper-parameters that require expert tuning. The algorithm requires user to select two things, a lower-bound and the confidence level. Then the proposed algo will ensure that the probability that it returns never breach the condition. We then propose an incremental algorithm that executes our policy improvement algorithm repeatedly to generate multiple policy improvements
+- Proposal
+  - batch (semi-)safe policy improvement algorithm, **POLICYIMPROVEMENT** , takes as input a set of trajectories labelled with the policies that generated them a performance lower bound, and a confidence level, and outputs either a new policy or NO SOLUTION FOUND (NSF).
+- Experiments
+  - a discrete 4 × 4 grid-world, the canonical Mountain Car domain
+  - The digital marketing domain involves optimising a policy that targets advertisements towards each user that visits a web-page, and uses real data collected from a Fortune 20 company. 
+- Conclusions
+  - We have presented batch and incremental policy improvement algorithms that provide (exact and approximate) statistical guarantees about the performance of policies that they propose. These guarantees can be tuned by the user to account for the acceptable level of risk in each application. We showed on a real world digital marketing problem that our algorithms can use a realistic amount of data to provide guaranteed policy improvements with confidence 95%.
+
+#### [Safe and efficient off-policy reinforcement learning by Remi Munos, Thomas Stepleton, Anna Harutyunyan, Marc G. Bellemare, NIPS, 2016](https://papers.nips.cc/paper/6538-safe-and-efficient-off-policy-reinforcement-learning.pdf)
+
+- Abstract
+  - In this work, we take a fresh look at some old and new algorithms for off-policy, return-based reinforcement learning. Expressing these in a common form, we derive a novel algorithm, Retrace($\lambda$) with three desired properties:
+    - it has low variance
+    - it safely uses samples collected from any behaviour policy, whatever its degree of "off-policyness"
+    - it is efficient as it makes the best use of samples collected from near on-policy behaviour policies
+
+    and they have examined their proposal on a standard suite of Atari 2600 games. In addition, we provide as **a corollary the first proof of convergence of Watkins’ Q(λ)** (see, e.g., Watkins, 1989; Sutton and Barto, 1998).
+
+- Proposal
+
+  - Retrace(λ) uses an importance sampling ratio truncated at 1. Compared to IS, it does not suffer from the variance explosion of the product of IS ratios. Now, similarly to Qπ(λ) and unlike TB(λ), it does not cut the traces in the on-policy case, making it possible to benefit from the full returns. In the off-policy case, the traces are safely cut, similarly to TB(λ)
+  - this algorithm does not require GLIE(Greedy in the Limit with Infinite Exploration, Singh et al.,
+    2000) assumption.
+
+- Experiments
+
+  - To validate our theoretical results, we employ Retrace(λ) in an experience replay (Lin, 1993) setting, where sample transitions are stored within a large but bounded replay memory and subsequently replayed as if they were new experience. We compare our algorithms’ performance on 60 different Atari 2600 games in the Arcade Learning Environment (Bellemare et al., 2013) using Bellemare et al.’s inter-algorithm score distribution. Inter-algorithm scores are normalized so that 0 and 1 respectively correspond to the worst and best score for a particular game, within the set of algorithms under comparison.
+
+- Conclusions
+
+  - Retrace(λ) can be seen as an algorithm that automatically adjusts – efficiently and safely – the length of the return to the degree of ”off-policyness” of any available data.
+
+#### [Constrained Policy Optimisation by Joshua Achiam, David Held, Aviv Tamar, Pieter Abbeel, ICML, 2017](https://arxiv.org/pdf/1705.10528.pdf)
+
+- Abstract
+  - For many applications of reinforcement learning it can be more convenient to specify both a reward function and constraints, rather than trying to design behaviour through the reward function.   We propose Constrained Policy Optimisation (CPO), the first general-purpose policy search algorithm for constrained reinforcement learning with guarantees for near-constraint satisfaction at each iteration. Our method allows us to train neural network policies for high-dimensional control while making guarantees about policy behaviour all throughout training. Our guarantees are based on a new theoretical result, which is of independent interest: we prove a bound relating the expected returns of two policies to an average divergence between them. We demonstrate the effectiveness of our approach on simulated robot locomotion tasks where the agent must satisfy constraints motivated by safety
+- Proposal
+  - Constrained Policy Optimisation (CPO), the first general-purpose policy search algorithm for constrained reinforcement learning with guarantees for near-constraint satisfaction at each iteration.
+- Experiments
+  - Using two tasks below, they have attempted to answer the questions below.
+  - Experimental Tasks
+    - **Circle**: The agent is rewarded for running in a wide-circle, but is constrained to stay within a 	safe region smaller than the radius of the target circle.
+    - **Gather**: The agent is rewarded for collecting green apples, and constrained to avoid red bombs.
+  - Questions
+    - Does CPO succeed at enforcing behavioural constraints when training neural network policies with thousands of parameters?
+    - How does CPO compare with a baseline that uses primal-dual optimisation? Does CPO behave better with respect to constraints?
+    - How much does it help to constrain a cost upper bound, instead of directly constraining the cost?
+    - What benefits are conferred by using constraints instead of fixed penalties?
+- Conclusions
+  - In this article, we showed that a particular optimisation problem results in policy updates that are guaranteed to both improve return and satisfy constraints. This enabled the development of CPO, our policy search algorithm for CMDPs, which approximates the theoretically-guaranteed algorithm in a principled way. We demonstrated that CPO can train neural network policies with thousands of parameters on high-dimensional constrained control tasks, simultaneously maximising reward and approximately satisfying constraints. Our work represents a step towards applying reinforcement learning in the real world, where constraints on agent behaviour are sometimes necessary for the sake of safety.
