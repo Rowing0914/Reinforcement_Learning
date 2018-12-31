@@ -284,7 +284,7 @@
 
   - MPSC
 
-  ![wabersich_abs](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/saf _reinforcement_learning/A_comprehensive_survey_Safe_RL/images/wabersich_abs.PNG)
+  ![wabersich_abs](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/A_comprehensive_survey_Safe_RL/images/wabersich_abs.png)
 
 - Experiments
 
