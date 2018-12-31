@@ -94,15 +94,15 @@ In this context, *different among domain(source and target)* means that either
 
 1. **What to transfer**
 
-   which part of knowledge can be transferred across domains or tasks. Some knowledge is specific for individual domains or tasks, and some knowledge may be common between different domains such that they may help improve performance for the target domain or task.
+   which part of knowledge can be transferred across domains or tasks. Some knowledge is specific for individual domains or tasks, and some knowledge may be common between different domains such that they may help improve performance for the target domain or task. **p4**
 
 2. **How to transfer**
 
-   After discovering which knowledge can be transferred, learning algorithms need to be developed to transfer the knowledge, which corresponds to the “how to transfer”issue.
+   After discovering which knowledge can be transferred, learning algorithms need to be developed to transfer the knowledge, which corresponds to the “how to transfer”issue. **p4**
 
 3. **When to transfer**
 
-   which situations, transferring skills should be done. Likewise, we are interested in knowing in which situations, knowledge should not be transferred.
+   which situations, transferring skills should be done. Likewise, we are interested in knowing in which situations, knowledge should not be transferred.  **p4**
 
 ##### Taxonomy of Transfer Learning Situations
 
@@ -124,11 +124,9 @@ In this context, *different among domain(source and target)* means that either
 
    the target task is different from but related to the source task. However, the unsupervised transfer learning focus on solving unsupervised learning tasks in the target domain, such as clustering, dimensionality reduction, and density estimation
 
+   Approaches to transfer learning in the above three different settings can be summarised into four cases based on “What to transfer.” **p5**
 
-
-   Approaches to transfer learning in the above three different settings can be summarised into four cases based on “What to transfer.”
-
-   1. **Instance transfer**: to re-weight some labelled data in the source domain for use in the target domain
+   1. **Instance transfer**: to re-weight some labelled data in the source domain for use in the target domain **p5**
 
       [24] B. Zadrozny, “Learning and Evaluating Classifiers under Sample Selection Bias,” Proc. 21st Int’l Conf. Machine Learning, July 2004.
 
@@ -147,7 +145,7 @@ In this context, *different among domain(source and target)* means that either
 
       [35] W. Fan, I. Davidson, B. Zadrozny, and P.S. Yu, “An Improved Categorization of Classifier’s Sensitivity on Sample Selection Bias,” Proc. Fifth IEEE Int’l Conf. Data Mining, 2005.
 
-   2. **Feature representation transfer**: find a "god" feature representation that reduces difference between the source and the target domains and the error of classification and regression models
+   2. **Feature representation transfer**: find a "god" feature representation that reduces difference between the source and the target domains and the error of classification and regression models **p5**
 
       [8] J. Blitzer, M. Dredze, and F. Pereira, “Biographies, Bollywood, Boom-Boxes and Blenders: Domain Adaptation for Sentiment Classification,” Proc. 45th Ann. Meeting of the Assoc. Computational Linguistics, pp. 432-439, 2007. 
 
@@ -171,7 +169,7 @@ In this context, *different among domain(source and target)* means that either
 
       [44] C. Wang and S. Mahadevan, “Manifold Alignment Using Procrustes Analysis,” Proc. 25th Int’l Conf. Machine Learning ,pp. 1120-1127, July 2008.
 
-   3. **Parameter transfer**: discover shared parameters or priors between the source and the target domain models, which can benefit for transfer learning
+   3. **Parameter transfer**: discover shared parameters or priors between the source and the target domain models, which can benefit for transfer learning **p5**
 
       [45] N.D. Lawrence and J.C. Platt, “Learning to Learn with the Informative Vector Machine,” Proc. 21st Int’l Conf. Machine Learning, July 2004.
 
@@ -183,7 +181,7 @@ In this context, *different among domain(source and target)* means that either
 
       [49] J. Gao, W. Fan, J. Jiang, and J. Han, “Knowledge Transfer via Multiple Model Local Structure Mapping,” Proc. 14th ACM SIGKDD Int’l Conf. Knowledge Discovery and Data Mining, pp. 283-291, Aug. 2008.
 
-   4. **Relational knowledge transfer**: build mapping of relational knowledge between the source and the target domains. Both domains are relational domains and i.i.d assumption is relaxed in each domain
+   4. **Relational knowledge transfer**: build mapping of relational knowledge between the source and the target domains. Both domains are relational domains and i.i.d assumption is relaxed in each domain **p5**
 
       [50] L. Mihalkova, T. Huynh, and R.J. Mooney, “Mapping and Revising Markov Logic Networks for Transfer Learning,” Proc. 22nd Assoc. for the Advancement of Artificial Intelligence (AAAI) Conf. Artificial Intelligence, pp. 608-614, July 2007. 
 
@@ -197,59 +195,59 @@ We will look into all three problems settings mentioned above from now on.
 
 #### Definition 2 (Inductive Transfer Learning). 
 
-Given a source domain $D_S$ and a learning task $T_S$, a target domain $D_T$ and a learning task $T_T$, inductive transfer learning aims to help improve the learning of the target predictive function $f(cdot)$ in $D_T$ using the knowledge in $D_S$ and $T_S$, where $T_S \neq T_T$.
+Given a source domain $D_S$ and a learning task $T_S$, a target domain $D_T$ and a learning task $T_T$, inductive transfer learning aims to help improve the learning of the target predictive function $f(cdot)$ in $D_T$ using the knowledge in $D_S$ and $T_S$, where $T_S \neq T_T$.  **p6**
 
-So, put it differently, a few labelled data in the target domain are required as the training data to induce the target predictive function.
+So, put it differently, a few labelled data in the target domain are required as the training data to induce the target predictive function.  **p6**
 
 #### Transferring Knowledge of Instances(instance-transfer approach)
 
-- Dai et al. [6] proposed a boosting algorithm, **TrAdaBoost**, which is an extension of the *AdaBoost* algorithm, to address the inductive transfer learning problems. **TrAdaBoost** assumes that the source and target-domain data use exactly the same set of features and labels, but the distributions of the data in the two domains are different.
+- Dai et al. [6] proposed a boosting algorithm, **TrAdaBoost**, which is an extension of the *AdaBoost* algorithm, to address the inductive transfer learning problems. **TrAdaBoost** assumes that the source and target-domain data use exactly the same set of features and labels, but the distributions of the data in the two domains are different.  **p6**
 
   [6] W. Dai, Q. Yang, G. Xue, and Y. Yu, “Boosting for Transfer Learning,” Proc. 24th Int’l Conf. Machine Learning, pp. 193-200, June 2007.
 
-- Jiang and Zhai [30] proposed a heuristic method to remove “misleading” training examples from the source domain based on the difference between conditional probabilities $P(y_T | x_T)$and $P(y_S | x_S)$ .
+- Jiang and Zhai [30] proposed a heuristic method to remove “misleading” training examples from the source domain based on the difference between conditional probabilities $P(y_T | x_T)$and $P(y_S | x_S)$ .  **p6**
 
   [30] J. Jiang and C. Zhai, “Instance Weighting for Domain Adaptation in NLP,” Proc. 45th Ann. Meeting of the Assoc. Computational Linguistics, pp. 264-271, June 2007. 
 
-- Liao et al. [31] proposed a new active learning method to select the unlabelled data in a target domain to be labelled with the help of the source domain data. 
+- Liao et al. [31] proposed a new active learning method to select the unlabelled data in a target domain to be labelled with the help of the source domain data.   **p6**
 
   [31] X. Liao, Y. Xue, and L. Carin, “Logistic Regression with an Auxiliary Data Source,” Proc. 21st Int’l Conf. Machine Learning, pp. 505-512, Aug. 2005. 
 
-- Wu and Dietterich [53] integrated the source domain (auxiliary) data an Support Vector Machine (SVM) framework for improving the classification performance.
+- Wu and Dietterich [53] integrated the source domain (auxiliary) data an Support Vector Machine (SVM) framework for improving the classification performance.  **p6**
 
   [53] P. Wu and T.G. Dietterich, “Improving SVM Accuracy by Training on Auxiliary Data Sources,” Proc. 21st Int’l Conf. Machine Learning, July 2004.
 
 #### Transferring Knowledge of Feature Representations
 
-The feature-representation-transfer approach to the inductive transfer learning problem aims at finding “good” feature representations to minimise domain divergence and classification or regression model error. Strategies to find “good” feature representations are different for different types of the source domain data.
+The feature-representation-transfer approach to the inductive transfer learning problem aims at finding “good” feature representations to minimise domain divergence and classification or regression model error. Strategies to find “good” feature representations are different for different types of the source domain data. **p6**
 
 ##### Supervised Feature Construction
 
-The basic idea is to learn a low-dimensional representation that is shared across related tasks. In addition, the learned new representation can reduce the classification or regression model error of each task as well.
+The basic idea is to learn a low-dimensional representation that is shared across related tasks. In addition, the learned new representation can reduce the classification or regression model error of each task as well.  **p6**
 
-- Argyriou et al. [40] proposed a sparse feature learning method for multitask learning. In the inductive transfer learning setting, the common features can be learned by solving an optimisation problem.
+- Argyriou et al. [40] proposed a sparse feature learning method for multitask learning. In the inductive transfer learning setting, the common features can be learned by solving an optimisation problem.  **p6**
 
   [40] A. Argyriou, T. Evgeniou, and M. Pontil, “Multi-Task Feature Learning,” Proc. 19th Ann. Conf. Neural Information Processing Systems, pp. 41-48, Dec. 2007.
 
-- In a follow-up work, Argyriou et al. [41] proposed a spectral regularisation framework on matrices for multitask structure learning.
+- In a follow-up work, Argyriou et al. [41] proposed a spectral regularisation framework on matrices for multitask structure learning.  **p6**
 
   [41] A. Argyriou, C.A. Micchelli, M. Pontil, and Y. Ying, “A Spectral Regularisation Framework for Multi-Task Structure Learning,” Proc. 20th Ann. Conf. Neural Information Processing Systems, pp. 25- 32, 2008.
 
-- Lee et al. [42] proposed a convex optimisation algorithm for simultaneously learning meta-priors and feature weights from an ensemble of related prediction tasks. The meta-priors can be transferred among different tasks.
+- Lee et al. [42] proposed a convex optimisation algorithm for simultaneously learning meta-priors and feature weights from an ensemble of related prediction tasks. The meta-priors can be transferred among different tasks.  **p6**
 
   [42] S.I. Lee, V. Chatalbashev, D. Vickrey, and D. Koller, “Learning a Meta-Level Prior for Feature Relevance from Multiple Related Tasks,” Proc. 24th Int’l Conf. Machine Learning, pp. 489-496, July 2007.
 
-- Jebara [43] proposed to select features for multitask learning with SVMs. 
+- Jebara [43] proposed to select features for multitask learning with SVMs.   **p6**
 
   [43] T. Jebara, “Multi-Task Feature and Kernel Selection for SVMs,” Proc. 21st Int’l Conf. Machine Learning, July 2004.
 
-- Ruckert and Kramer [54] designed a kernel-based approach to inductive transfer, which aims at finding a suitable kernel for the target data.
+- Ruckert and Kramer [54] designed a kernel-based approach to inductive transfer, which aims at finding a suitable kernel for the target data.  **p6**
 
   [54] U. Ruckert and S. Kramer, “Kernel-Based Inductive Transfer,” Proc. European Conf. Machine Learning and Knowledge Discovery in Databases (ECML/PKDD ’08), pp. 220-233, Sept. 2008.
 
 ##### Unsupervised Feature Construction
 
-- In [22], Raina et al. proposed to apply sparse coding [55], which is an unsupervised feature construction method, for learning higher level features for transfer learning. 
+- In [22], Raina et al. proposed to apply sparse coding [55], which is an unsupervised feature construction method, for learning higher level features for transfer learning.   **p6**
 
   [22] R. Raina, A. Battle, H. Lee, B. Packer, and A.Y. Ng, “Self-TaughtLearning: Transfer Learning from Unlabeled Data,” Proc. 24th Int’l Conf. Machine Learning, pp. 759-766, June 2007
 
@@ -257,9 +255,26 @@ The basic idea is to learn a low-dimensional representation that is shared acros
   Algorithms,” Proc. 19th Ann. Conf. Neural Information Processing
   Systems, pp. 801-808, 2007.
 
-- Recently, manifold learning methods have been adapted for transfer learning. In [44], Wang and Mahadevan proposed a Procrustes analysis-based approach to manifold alignment without correspondences, which can be used to transfer the knowledge across domains via the aligned manifolds.
+- Recently, manifold learning methods have been adapted for transfer learning. In [44], Wang and Mahadevan proposed a Procrustes analysis-based approach to manifold alignment without correspondences, which can be used to transfer the knowledge across domains via the aligned manifolds.  **p6**
 
   [44] C. Wang and S. Mahadevan, “Manifold Alignment Using Procrustes Analysis,” Proc. 25th Int’l Conf. Machine Learning ,pp. 1120-1127, July 2008.
 
 #### Transferring Knowledge of Parameters
 
+ Most parameter-transfer approaches to the inductive transfer learning setting assume that individual models for related tasks should share some parameters or prior distributions of hyper-parameters. **p7**
+
+- Lawrence and Platt [45] proposed an efficient algorithm known as MT-IVM, which is based on Gaussian Processes (GP), to handle the multitask learning case. MT-IVM tries to learn parameters of a Gaussian Process over multiple tasks by sharing the same GP prior.
+
+  [45] N.D. Lawrence and J.C. Platt, “Learning to Learn with the Informative Vector Machine,” Proc. 21st Int’l Conf. Machine Learning, July 2004.
+
+- Bonilla et al. [46] also investigated multitask learning in the context of GP. The authors proposed to use a free-form covariance matrix over tasks to model intertask dependencies, where a GP prior is used to induce correlations between tasks.
+
+  [46] E. Bonilla, K.M. Chai, and C. Williams, “Multi-Task Gaussian Process Prediction,” Proc. 20th Ann. Conf. Neural Information Processing Systems, pp. 153-160, 2008.
+
+- Schwaighofer et al. [47] proposed to use a hierarchical Bayesian framework (HB) together with GP for multitask learning.
+
+  [47] A. Schwaighofer, V. Tresp, and K. Yu, “Learning Gaussian Process Kernels via Hierarchical Bayes,” Proc. 17th Ann. Conf. Neural Information Processing Systems, pp. 1209-1216, 2005. 
+
+- Evgeniou and Pontil [48] borrowed the idea of HB to SVMs for multitask learning. And the base idea is that transferring the priors of the GP models, some researchers also proposed to transfer parameters of SVMs under a regularisation framework
+
+  [48] T. Evgeniou and M. Pontil, “Regularized Multi-Task Learning,” Proc. 10th ACM SIGKDD Int’l Conf. Knowledge Discovery and Data Mining, pp. 109-117, Aug. 2004. 
