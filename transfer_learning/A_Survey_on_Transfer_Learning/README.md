@@ -4,6 +4,8 @@ Title: A Survey on Transfer Learning
 
 Authors: Sinno Jialin Pan and Qiang Yang, Fellow, IEEE
 
+Link: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5288526&tag=1
+
 
 
 ## Paper Structure
@@ -33,7 +35,7 @@ Authors: Sinno Jialin Pan and Qiang Yang, Fellow, IEEE
 
 ## Note
 
-### A Brief History of Transfer learning
+### 1. A Brief History of Transfer learning
 
 #### Problem Setting in general
 
@@ -73,7 +75,7 @@ Among these, a closely related learning technique to transfer learning is the mu
 
 In 2005, the Broad Agency Announcement (BAA) 05-29 of Defense Advanced Research Projects Agency (DARPA)’s Information Processing Technology Office (IPTO) gave a new mission of transfer learning: the ability of a system to recognise and apply knowledge and skills learned in previous tasks to novel tasks. In this definition, transfer learning aims to extract the knowledge from one or more source tasks and applies the knowledge to a target task. In contrast to multitask learning, rather than learning all of the source and target tasks simultaneously, transfer learning cares most about the target task. The roles of the source and target tasks are no longer symmetric in transfer learning. **p2**
 
-### Notations and Definitions
+### 2. Notations and Definitions
 
 #### Domain and Task
 
@@ -191,7 +193,7 @@ In this context, *different among domain(source and target)* means that either
 
 We will look into all three problems settings mentioned above from now on.
 
-### Inductive Transfer Learning
+### 3. Inductive Transfer Learning
 
 #### Definition 2 (Inductive Transfer Learning). 
 
@@ -303,7 +305,7 @@ Different from other three contexts, the relational-knowledge-transfer approach 
 
   [52] J. Davis and P. Domingos, “Deep Transfer via Second-Order Markov Logic,” Proc. Assoc. for the Advancement of Artificial Intelligence (AAAI ’08) Workshop Transfer Learning for Complex Tasks, July 2008.
 
-### Transductive Transfer Learning
+### 4. Transductive Transfer Learning
 
 Although in the conventional *transductive transfer learning* firstly proposed by Arnold et al. [58], where they required that the source and target tasks be the same. In this paper, the author relaxed this condition to that , we only require that part of the unlabelled target data be seen at training time in order to obtain the marginal probability for the target data. **p8**
 
@@ -340,3 +342,67 @@ Most instance-transfer approaches to the transductive transfer learning setting 
   [28] W. Dai, G. Xue, Q. Yang, and Y. Yu, “Transferring Naive Bayes Classifiers for Text Classification,” Proc. 22nd Assoc. for the Advancement of Artificial Intelligence (AAAI) Conf. Artificial Intelligence, pp. 540-545, July 2007.
 
   [29] J. Quionero-Candela, M. Sugiyama, A. Schwaighofer, and N.D. Lawrence, Dataset Shift in Machine Learning. MIT Press, 2009.
+
+#### Transferring Knowledge of Feature Representations(Feature representation transfer)
+
+Most feature-representation-transfer approaches to the transductive transfer learning setting are under unsupervised learning frameworks. **p9**
+
+- Blitzer et al. [38] proposed a structural correspondence learning (SCL) algorithm, which extends [37], to make use of the unlabeled data from the target domain to extract some relevant features that may reduce the difference between the domains.  **p9**
+
+  [36] W. Dai, G. Xue, Q. Yang, and Y. Yu, “Co-Clustering Based Classification for Out-of-Domain Documents,” Proc. 13th ACM SIGKDD Int’l Conf. Knowledge Discovery and Data Mining, Aug. 2007.  
+
+  [37] R.K. Ando and T. Zhang, “A High-Performance Semi-Supervised Learning Method for Text Chunking,” Proc. 43rd Ann. Meeting on Assoc. for Computational Linguistics, pp. 1-9, 2005. 
+
+- In [63], Xing et al. proposed a novel algorithm known as bridged refinement to correct the labels predicted by a shift-unaware classifier toward a target distribution and take the mixture distribution of the training and test data as a bridge to better transfer from the training data to the test data.  **p9**
+
+  [63] D. Xing, W. Dai, G.-R. Xue, and Y. Yu, “Bridged Refinement for Transfer Learning,” Proc. 11th European Conf. Principles and Practice of Knowledge Discovery in Databases, pp. 324-335, Sept. 2007.
+
+- In [64], Ling et al. proposed a spectral classification framework for cross-domain transfer learning problem, where the objective function is introduced to seek consistency between the in-domain supervision and the out-of-domain intrinsic structure. **p9**
+
+  [64] X. Ling, W. Dai, G.-R. Xue, Q. Yang, and Y. Yu, “Spectral Domain Transfer Learning,” Proc. 14th ACM SIGKDD Int’l Conf. Knowledge Discovery and Data Mining, pp. 488-496, Aug. 2008.  **p9**
+
+- In [65], Xue et al. proposed a cross-domain text classification algorithm that extended the traditional probabilistic latent semantic analysis (PLSA) algorithm to integrate labelled and unlabelled data from different but related domains, into a unified probabilistic model. The new model is called Topic-bridged PLSA, or TPLSA.
+
+  [65] G.-R. Xue, W. Dai, Q. Yang, and Y. Yu, “Topic-Bridged PLSA for Cross-Domain Text Classification,” Proc. 31st Ann. Int’l ACM SIGIR Conf. Research and Development in Information Retrieval, pp. 627-634, July 2008.
+
+- Transfer learning via dimensionality reduction was recently proposed by Pan et al. [66]. In this work, Pan et al. exploited the Maximum Mean Discrepancy Embedding (MMDE) method, originally designed for dimensionality reduction, to learn a low-dimensional space to reduce the difference of distributions between different domains for transductive transfer learning. However, MMDE may suffer from its computational burden. Thus, in [67], Pan et al. further proposed an efficient feature extraction algorithm, known as Transfer Component Analysis (TCA) to overcome the drawback of MMDE. **p10**
+
+  [66] S.J. Pan, J.T. Kwok, and Q. Yang, “Transfer Learning via Dimensionality Reduction,” Proc. 23rd Assoc. for the Advancement of Artificial Intelligence (AAAI) Conf. Artificial Intelligence, pp. 677- 682, July 2008.
+
+  [67] S.J. Pan, I.W. Tsang, J.T. Kwok, and Q. Yang, “Domain Adaptation via Transfer Component Analysis,” Proc. 21st Int’l Joint Conf. Artificial Intelligence, 2009.
+
+### 5. UNSUPERVISED TRANSFER LEARNING
+
+No labelled data are observed in the source and target domains in training.
+
+#### Definition 4 (Unsupervised Transfer Learning).
+
+Given a source domain $D_S$ with a learning task $D_S$, a target domain $D_T$ and a corresponding learning task $T_T$ , unsupervised transfer learning aims to help improve the learning of the target predictive function $f_T(\cdot)$** in $D_T$ using the knowledge in $D_S$ and $T_S$, where $T_S \neq T_T$ and $Y_S$ and $Y_T$ are not observable.
+
+** In unsupervised transfer learning, the predicted labels are latent
+variables, such as clusters or reduced dimensions. **p10**
+
+#### Transferring Knowledge of Feature Representations(Feature representation transfer)
+
+Recently, Self-taught clustering (STC) [26] and transferred discriminative analysis (TDA) [27] algorithms are proposed to transfer clustering and transfer dimensionality reduction problems, respectively. **p10**
+
+[26] W. Dai, Q. Yang, G. Xue, and Y. Yu, “Self-Taught Clustering,” Proc. 25th Int’l Conf. Machine Learning, pp. 200-207, July 2008.
+
+[27] Z. Wang, Y. Song, and C. Zhang, “Transferred Dimensionality Reduction,” Proc. European Conf. Machine Learning and Knowledge Discovery in Databases (ECML/PKDD ’08), pp. 550-565, Sept. 2008.
+
+### 6. TRANSFER BOUNDS AND NEGATIVE TRANSFER
+
+- **Transfer Bounds**: the limit of the power of transfer learning
+
+- **Negative transfer** happens when the source domain data and task contribute to the reduced performance of learning in the target domain. Despite the fact that how to avoid negative transfer is a very important issue, little research work has been published on this topic.   **p10**
+
+
+
+### 7. Open Problems and Conclusions
+
+In the future, several important research issues need to be addressed. 
+
+- how to avoid negative transfer is an open problem. As mentioned in Section 6, many proposed transfer learning algorithms assume that the source and target domains are related to each other in some sense. However, if the assumption does not hold, negative transfer may happen, which may cause the learner to perform worse than no transferring at all. **p13**
+
+- how to measure the similarity/dissimilarity between domains. **p13**
+- **Heterogeneous Transfer Learning**: most existing transfer learning algorithms so far assumed that the feature spaces between the source and target domains are the same. However, in many applications, we may wish to transfer knowledge across domains or tasks that have different feature spaces, and transfer from multiple such source domains. We refer to this type of transfer learning as **heterogeneous transfer learning**.
