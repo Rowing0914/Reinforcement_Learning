@@ -217,7 +217,7 @@ So, put it differently, a few labelled data in the target domain are required as
 
   [53] P. Wu and T.G. Dietterich, “Improving SVM Accuracy by Training on Auxiliary Data Sources,” Proc. 21st Int’l Conf. Machine Learning, July 2004.
 
-#### Transferring Knowledge of Feature Representations
+#### Transferring Knowledge of Feature Representations(Feature representation transfer)
 
 The feature-representation-transfer approach to the inductive transfer learning problem aims at finding “good” feature representations to minimise domain divergence and classification or regression model error. Strategies to find “good” feature representations are different for different types of the source domain data. **p6**
 
@@ -259,22 +259,84 @@ The basic idea is to learn a low-dimensional representation that is shared acros
 
   [44] C. Wang and S. Mahadevan, “Manifold Alignment Using Procrustes Analysis,” Proc. 25th Int’l Conf. Machine Learning ,pp. 1120-1127, July 2008.
 
-#### Transferring Knowledge of Parameters
+#### Transferring Knowledge of Parameters(Parameters transfer)
 
  Most parameter-transfer approaches to the inductive transfer learning setting assume that individual models for related tasks should share some parameters or prior distributions of hyper-parameters. **p7**
 
-- Lawrence and Platt [45] proposed an efficient algorithm known as MT-IVM, which is based on Gaussian Processes (GP), to handle the multitask learning case. MT-IVM tries to learn parameters of a Gaussian Process over multiple tasks by sharing the same GP prior.
+- Lawrence and Platt [45] proposed an efficient algorithm known as MT-IVM, which is based on Gaussian Processes (GP), to handle the multitask learning case. MT-IVM tries to learn parameters of a Gaussian Process over multiple tasks by sharing the same GP prior. **p7**
 
   [45] N.D. Lawrence and J.C. Platt, “Learning to Learn with the Informative Vector Machine,” Proc. 21st Int’l Conf. Machine Learning, July 2004.
 
-- Bonilla et al. [46] also investigated multitask learning in the context of GP. The authors proposed to use a free-form covariance matrix over tasks to model intertask dependencies, where a GP prior is used to induce correlations between tasks.
+- Bonilla et al. [46] also investigated multitask learning in the context of GP. The authors proposed to use a free-form covariance matrix over tasks to model intertask dependencies, where a GP prior is used to induce correlations between tasks. **p7**
 
   [46] E. Bonilla, K.M. Chai, and C. Williams, “Multi-Task Gaussian Process Prediction,” Proc. 20th Ann. Conf. Neural Information Processing Systems, pp. 153-160, 2008.
 
-- Schwaighofer et al. [47] proposed to use a hierarchical Bayesian framework (HB) together with GP for multitask learning.
+- Schwaighofer et al. [47] proposed to use a hierarchical Bayesian framework (HB) together with GP for multitask learning. **p7**
 
   [47] A. Schwaighofer, V. Tresp, and K. Yu, “Learning Gaussian Process Kernels via Hierarchical Bayes,” Proc. 17th Ann. Conf. Neural Information Processing Systems, pp. 1209-1216, 2005. 
 
-- Evgeniou and Pontil [48] borrowed the idea of HB to SVMs for multitask learning. And the base idea is that transferring the priors of the GP models, some researchers also proposed to transfer parameters of SVMs under a regularisation framework
+- Evgeniou and Pontil [48] borrowed the idea of HB to SVMs for multitask learning. And the base idea is that transferring the priors of the GP models, some researchers also proposed to transfer parameters of SVMs under a regularisation framework **p7**
 
   [48] T. Evgeniou and M. Pontil, “Regularized Multi-Task Learning,” Proc. 10th ACM SIGKDD Int’l Conf. Knowledge Discovery and Data Mining, pp. 109-117, Aug. 2004. 
+
+- Gao et al. [49] proposed a locally weighted ensemble learning framework to combine multiple models for transfer learning, where the weights are dynamically assigned according to a model’s predictive power on each test example in the target domain. **p7**
+
+  [49] J. Gao, W. Fan, J. Jiang, and J. Han, “Knowledge Transfer via Multiple Model Local Structure Mapping,” Proc. 14th ACM SIGKDD Int’l Conf. Knowledge Discovery and Data Mining, pp. 283-291, Aug. 2008.
+
+#### Transferring Relational Knowledge(relational knowledge transfer)
+
+Different from other three contexts, the relational-knowledge-transfer approach deals with transfer learning problems in relational domains, where the data are **non-i.i.d**. and can be represented by multiple relations, such as networked data and social network data. **p7**
+
+- Mihalkova et al. [50] proposed an algorithm TAMAR that transfers relational knowledge with Markov Logic Networks (MLNs) across relational domains **p7**
+
+  [50] L. Mihalkova, T. Huynh, and R.J. Mooney, “Mapping and Revising Markov Logic Networks for Transfer Learning,” Proc. 22nd Assoc. for the Advancement of Artificial Intelligence (AAAI) Conf. Artificial Intelligence, pp. 608-614, July 2007.
+
+- MLNs [56] is a powerful formalism, which combines the compact expressiveness of first-order logic with flexibility of probability, for statistical relational learning. In MLNs, entities in a relational domain are represented by predicates and their relationships are represented in first-order logic.  **p7**
+
+  [56] M. Richardson and P. Domingos, “Markov Logic Networks,” Machine Learning J., vol. 62, nos. 1/2, pp. 107-136, 2006.
+
+- In the AAAI-2008 workshop on transfer learning for complex tasks,4 Mihalkova and Mooney [51] extended TAMAR to the single-entity-centred setting of transfer learning, where only one entity in a target domain is available **p7**
+
+  [51] L. Mihalkova and R.J. Mooney, “Transfer Learning by Mapping with Minimal Target Data,” Proc. Assoc. for the Advancement of Artificial Intelligence (AAAI ’08) Workshop Transfer Learning for Complex Tasks, July 2008. 
+
+- Davis and Domingos [52] proposed an approach to transferring relational knowledge based on a form of second-order Markov logic. The basic idea of the algorithm is to discover structural regularities in the source domain in the form of Markov logic formulas with predicate variables, by instantiating these formulas with predicates from the target domain. **p8**
+
+  [52] J. Davis and P. Domingos, “Deep Transfer via Second-Order Markov Logic,” Proc. Assoc. for the Advancement of Artificial Intelligence (AAAI ’08) Workshop Transfer Learning for Complex Tasks, July 2008.
+
+### Transductive Transfer Learning
+
+Although in the conventional *transductive transfer learning* firstly proposed by Arnold et al. [58], where they required that the source and target tasks be the same. In this paper, the author relaxed this condition to that , we only require that part of the unlabelled target data be seen at training time in order to obtain the marginal probability for the target data. **p8**
+
+[58] A. Arnold, R. Nallapati, and W.W. Cohen, “A Comparative Study of Methods for Transductive Transfer Learning,” Proc. Seventh IEEE Int’l Conf. Data Mining Workshops, pp. 77-82, 2007.
+
+Note that we use the term transductive to emphasise the concept that in this type of transfer learning, the tasks must be the same and there must be some unlabelled data available in the target domain. **p8**
+
+#### Definition 3 (Transductive Transfer Learning)
+
+Given a source domain $D_S$ and a corresponding learning task $T_S$, a target domain $D_T$ and a corresponding learning task $T_T$ , transductive transfer learning aims to improve the learning of the target predictive function $f(\cdot)$ in $D_T$ using the knowledge in $D_S$ and $T_S$, where $D_S \neq D_T$ and $T_S = T_T$. In addition, some unlabelled target-domain data must be available at training time. **p8**
+
+#### Transferring the Knowledge of Instances(instance-transfer)
+
+Most instance-transfer approaches to the transductive transfer learning setting are motivated by **importance sampling**. **p8**
+
+- Zadrozny [24] proposed to estimate the terms $P(x_{z_i})$ and $P(x_{T_i})$ independently by constructing simple classification problems **p8** 
+
+  [24] B. Zadrozny, “Learning and Evaluating Classifiers under Sample Selection Bias,” Proc. 21st Int’l Conf. Machine Learning, July 2004..
+
+- Fan et al. [35] further analyzed the problems by using various classifiers to estimate the probability ratio. **p9**
+
+  [35] W. Fan, I. Davidson, B. Zadrozny, and P.S. Yu, “An Improved Categorization of Classifier’s Sensitivity on Sample Selection Bias,” Proc. Fifth IEEE Int’l Conf. Data Mining, 2005.
+
+- Huang et al. [32] proposed a kernel-mean matching (KMM) algorithm to learn $\frac{P(x_{s_i})}{P(x_{_Ti})}$ directly by matching the means between the source domain data and the target domain data in a reproducing-kernel Hilbert space (RKHS).  **p9**
+
+  [32] J. Huang, A. Smola, A. Gretton, K.M. Borgwardt, and B. Scho¨lkopf, “Correcting Sample Selection Bias by Unlabeled Data,” Proc. 19th Ann. Conf. Neural Information Processing Systems, 2007. 
+
+- Bickel et al. [33] combined the two steps in a unified framework by deriving a kernel-logistic regression classifier. **p9**
+
+  [33] S. Bickel, M. Bru¨ ckner, and T. Scheffer, “Discriminative Learning for Differing Training and Test Distributions,” Proc. 24th Int’l Conf. Machine Learning, pp. 81-88, 2007. 
+
+- Dai et al. [28] extended a traditional Naive Bayesian classifier for the transductive transfer learning problems.  For more information on importance sampling and reweighting methods for covariate shift or sample selection bias, readers can refer to a recently published book [29] by Quionero-Candela et al. One can also consult a tutorial on Sample Selection Bias by Fan and Sugiyama in ICDM-08  **p9**
+
+  [28] W. Dai, G. Xue, Q. Yang, and Y. Yu, “Transferring Naive Bayes Classifiers for Text Classification,” Proc. 22nd Assoc. for the Advancement of Artificial Intelligence (AAAI) Conf. Artificial Intelligence, pp. 540-545, July 2007.
+
+  [29] J. Quionero-Candela, M. Sugiyama, A. Schwaighofer, and N.D. Lawrence, Dataset Shift in Machine Learning. MIT Press, 2009.
