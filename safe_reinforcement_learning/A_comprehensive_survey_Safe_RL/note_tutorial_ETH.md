@@ -277,8 +277,17 @@
 #### Linear Model Predictive Safety Certification for Learning-based Control by K.P. Wabersich, M.N. Zeilinger, CDC, 2018
 
 - Abstract
+
+  - While it has been repeatedly shown that learning-based controllers can provide superior performance, they often lack of safety guarantees. This paper aims at addressing this problem by introducing a model predictive safety certification (MPSC) scheme for linear systems with additive disturbances. The scheme verifies safety of a proposed learning-based input and modifies it as little as necessary in order to keep the system within a given set of constraints. By relying on robust MPC methods, the presented concept is amenable for application to large-scale systems with similar offline computational complexity as e.g. ellipsoidal safe set approximations. 
+
 - Proposal
+
+  - MPSC
+
+  ![wabersich_abs](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/saf _reinforcement_learning/A_comprehensive_survey_Safe_RL/images/wabersich_abs.PNG)
+
 - Experiments
+
 - Conclusions
 
 
