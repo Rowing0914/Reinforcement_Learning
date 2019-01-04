@@ -1,0 +1,180 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx, amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\title{Bayes Optimisation}
+\author{Norio Kosaka}
+\date{January 2019}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Topics}
+\begin{itemize}
+    \item Review of Gaussian process priors
+    \item Bayesian optimization basics
+    \item Managing covariances and kernel parameters
+    \item Accounting for the cost of evaluation
+    \item Parallelising training
+    \item Sharing information across related problems
+    \item Better models for nonstationary functions
+    \item Random projections for high-dimensional problems
+    \item Accounting for constraints
+    \item Leveraging partially-completed training runs
+\end{itemize}
+
+
+\section{Introduction}
+\subsection{Problem Statement}
+\begin{itemize}
+    \item Increasing Model Complexity: More flexible models have more parameters.
+    \item More Sophisticated Fitting Procedures: Non-convex optimisation has many knobs to turn.
+    \item Less Accessible to Non-Experts: Harder to apply complicated techniques.
+    \item Results Are Less Reproducible: Too many important implementation details are missing.
+\end{itemize}
+Above circumstances causes the inefficiency in finding the optimal hyperparameters in the model, so we need better approach to seek good hyperparameters, because Grid search, Random search, Grad student descent are \textbf{Not} efficient They all need to traverse the all options to find the optimal hyperparameters.
+
+\subsection{Bayes Optimisation}
+\subsubsection{General Idea}
+\begin{itemize}
+    \item Use a surrogate/proxy model of $f$ to carry out the optimisation
+    \item Define an utility/objective function to collect new data points satisfying some optimality criterion
+    \item Learn decision problems as \textbf{inference} using the surrogate model
+\end{itemize}
+
+\subsubsection{Utility functions}
+The utility functions should represent our goal:
+\begin{itemize}
+    \item Active Learning and experimental design: Maximize the differential entropy of the posterior distribution $p(f \ | \ X, y)$
+    \item Minimise the loss in a sequence $x_1, \dots, x_n$
+    \[ r_N = \sum^N_{n=1} f(x_n) - N f(x_M) \]
+\end{itemize}
+
+\subsubsection{Definition of Bayes Optimisation}
+\begin{definition}
+Make the proxy function exploit uncertainty to balance \textbf{exploration}(Seek places with high variance) against \textbf{exploitation}(Seek places with low mean)
+\end{definition}
+
+\begin{itemize}
+    \item Build a probabilistic model for the objective: Include hierarchical structure about units, etc.
+    \item Compute the posterior predictive distribution: Integrate out all the possible true functions. We use Gaussian process regression.
+    \item Optimize a cheap proxy function instead: The model is much cheaper than that true objective.
+\end{itemize}
+
+\subsubsection{Bayesian Optimisation by [Mockus, 1978]}
+Methodology to perform global optimisation of multimodal black-box functions.
+
+\begin{enumerate}
+    \item Choose some prior measure over the space of possible objectives $f$.
+    \item Combine prior and the likelihood to get a posterior measure over the objective given some observations.
+    \item Use the posterior to decide where to take the next evaluation according to some acquisition/loss function.
+    \item Augment the data
+    \item Iterate between 2 and 4 until the evaluation budget is over.
+\end{enumerate}
+
+\subsection{Historical Overview}
+This is the approach which introduced Kirstine Smith in 1918. Since then many researches have been progressing, including the one from Box and Wilson in 1951 and Mockus in 1978. More recently, after 2007 to be specific, it is getting much more attention ever before. Interest exploded when it was realized that Bayesian optimization provides an excellent tool for finding good ML hyperparameters.
+
+\subsection{Variety of Surrogate Model}
+\subsubsection{Gaussian Processes(GP)}
+\begin{definition}
+$p(f)$ is a \textbf{Gaussian Process} if for \textit{any} finite subset $\{ x_1, \dots, x_n \} \subset X $. the marginal distribution over that finite subset $p(F)$ has a \textbf{multivariate Gaussian distribution}.
+\end{definition}
+
+A Gaussian process defines a distribution over functions, $p(f)$, where $f$ is a function mapping some input space $X$ to $R$. $f : X \rightarrow R$. Let $F = f(x_1), \dots, f(x_n))$ be an $n$-dimensional vector of function values evaluated at $n$ points $x_i \in X$. Note that $F$ is a random variable.
+
+In fact, GPs are parameterised by a \textbf{mean function}, $\mu(x)$ and a \textbf{covariance function(Kernel)}, $K(x, x')$.
+
+\[ p(f(x), f(x')) = N(\mu, \Sigma) \]
+where
+\[
+\mu = 
+\begin{bmatrix}
+\mu(x)\\
+\mu(x')
+\end{bmatrix}
+\ 
+\Sigma = 
+\begin{bmatrix}
+K(x, x) & K(x, x') \\
+K(x', x) & K(x', x')
+\end{bmatrix}
+\]
+
+Indeed, a common choice of covariance functions is the \textbf{squared exponential kernel}
+\[ K_{SE} = \sigma^2 \exp{ \Big( - \frac{(x - x')^2}{2l^2} \Big) } \]
+where $\sigma^2$ is a scale factor and $l$ is the length scale, which controls the \textit{wiggliness} of the function.
+
+As for the transition from Linear Regression to GPs is beautifully summarised on the the Figure 1 below.
+
+\begin{figure}[h]
+\caption{From slide 18 of  \href{http://mlss2011.comp.nus.edu.sg/uploads/Site/lect1gp.pdf}{ "A Tutorial on Gaussian Processes (or why I don’t use SVMs)" by Zoubin Ghahramani}}
+\centering
+\includegraphics[width=0.7\textwidth]{images/from_linearregression_to_gp.png}
+\end{figure}
+
+\subsubsection{Other models are possible}
+\begin{itemize}
+    \item Random Forrest by \href{https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/decisionForests_MSR_TR_2011_114.pdf}{Criminisi et al, 2011}
+    \item t-Student processes by \href{https://www.cs.cmu.edu/~andrewgw/tprocess.pdf}{A.Shah et al., 2014}
+\end{itemize}
+
+\subsection{Variety of Acquisition Functions}
+\begin{itemize}
+    \item GP Upper (lower) Confidence Band by [Srinivas et al., 2010]
+    Direct balance between exploration and exploitation:
+    \[ \alpha_{\textit{LCB}}(x; \theta, D) = - \mu(x; \theta, D) + \beta_t \sigma(x; \theta, D \]
+    In noiseless cases, it is a lower bound of the function to minimise.
+    This allows to computer a bound on how close we are to the minimum.
+    \item Expected Improvement by [Jones et al., 1998]
+    \[ \alpha_{\text{EI}}(x;\theta, D) = \int_y \max(0, y_{\text{best}} - y) \ p(y|x; \theta,D) dy \]
+    Perhaps the most used acquisition and explicit for available for Gaussian posteriors. However, It is too greedy in some problems. It is possible to make more explorative adding a ’explorative’ parameter.
+    \item Maximum Probability of Improvement by Hushner, 1964]
+    \[ \gamma(x) = \sigma(x; \theta, D)^{-1} (\mu(x; \theta, D) - y_{\text{best}}) \]
+    \[ \alpha_{\text{MPI}}(x; \theta, D) = p(f(x) < y_{\text{best}} = \Psi(\gamma(x)) \] The oldest acquisition function and very intuitive. but less practical nowadays. explicit for available for Gaussian posteriors.
+    \item Information Theoreric approaches by Hennig and Schuler, 2013; Hernandez-Lobato et al., 2014]
+    \[ \alpha_{\text{ES}}(x; \theta, D) = H[p(x_{\text{min}}|D)] - E_{p(y|D,x)} \Big[H[p(x_{\text{min}} | D \cup \{ X,y \})] \Big] \]
+    \item Thompson sampling by Probability matching [Rahimi and B. Recht, 2007]
+    \[ \alpha_{\text{thompon}}(x;\theta,D) = g(x) \] where $g(x)$ is sampled from GP.
+    It is easy to generate posterior samples of a GP at a finite set of locations. More difficult is to generate ‘continuous’ samples.
+\end{itemize}
+
+\subsubsection{Methods to optimise the acquisition function}
+\begin{itemize}
+    \item Gradient descent methods: Conjugate gradient, BFGS, etc.
+    \item Lipschitz based heuristics: DIRECT.
+    \item Evolutionary algorithms: CMA.
+\end{itemize}
+
+\section{Summary}
+\begin{itemize}
+    \item BO is a way of encoding our beliefs about a property of a function
+    \item The key components: the surrogate model and the acquisition functions
+    \item Many choices in both cases, especially in terms of the acquisition functions
+    \item The key is to find a good balance between exploration and exploitation
+\end{itemize}
+
+
+\section{References}
+\begin{itemize}
+    \item \href{https://www.iro.umontreal.ca/~bengioy/cifar/NCAP2014-summerschool/slides/Ryan_adams_140814_bayesopt_ncap.pdf}{A Tutorial on Bayesian Optimisation for Machine Learning by Ryan P. Adams}
+    \item \href{http://gpss.cc/gpmc17/slides/LancasterMasterclass_1.pdf}{Introduction to Bayesian Optimisation by Javier Gonzalez}
+    \item \href{http://web.mit.edu/iachec/meetings/2018/presentations/Jones_SessionIII.pdf}{Gaussian Process Tutorial by David Jones on 9/4/2018}
+\end{itemize}
+
+\end{document}

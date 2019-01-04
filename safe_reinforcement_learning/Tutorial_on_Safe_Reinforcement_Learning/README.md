@@ -57,9 +57,9 @@
 - Notion of safety
   - Expected risk: $E[G]$
   - Moment penalised: $E[e^{\tau G}]$
-  - Value at Risk: $VaR_{\delta}[G] = \inf \{ \epsilon \in R: p(G \leq \epsilon) \} \geq \delta $
-  - Conditional Value at Risk: $CVaR_{\delta}[G] = \frac{1}{\delta} \int^{\delta}_0 VaR_{\alpha}[G] d\alpha$
-  - Worst-case: $g(\tau) > 0 \ \forall_{\tau} \in \Gamma$
+  - Value at Risk: $\text{VaR}_{\delta}[G] = \inf \{ \epsilon \in R: p(G \leq \epsilon) \} \geq \delta $
+  - Conditional Value at Risk: $\text{CVaR}_{\delta}[G] = \frac{1}{\delta} \int^{\delta}_0 \text{VaR}_{\alpha}[G] d\alpha$
+  - Worst-case: $g(\tau) > 0 , \ \forall_{\tau} \in \Gamma$
     - Robust Control
     - Formal Verification
 
@@ -121,9 +121,23 @@
 - Confirmed how to safely initialise the prior knowledge
 - Reviewed a first method for safe learning in expectation
 
-
+-----
 
 ### Explicit Safe Exploration
+
+- Model-free approaches
+- Model-based approaches
+
+In safe RL domain, broadly speaking, we have two categories, which is Model-free and Model-based approaches. In model-free approaches, we care the estimate of $J(\theta)$ and optimise it, whereas in model-based approaches we aim to estimate/identify the dangerous states then plan/control the agent. So firstly, we will look at the model-free approaches.
+
+### Safe Model-free RL
+
+- Goal:  $max_{\theta} J(\theta)$ s.t. $g(\theta) \geq 0$ by tracking performance
+- Safety: $g(\theta) \geq 0, \forall t$  with probability $\geq 1 - \delta$
+
+As we have looked, the $g(\theta)$ evaluates the trajectories and $J(\theta)$ represents the performance. Given them, we have two framework to hold the safety in RL. One is the tracking performance $max_{\theta} J(\theta)$, which contains few noisy experiments. And the other is the safety constraint $g(\theta) \geq 0$, which holds the safety for all experiments with probability $\geq 1 - \delta$
+
+### Bayesian Optimisation
 
 
 
