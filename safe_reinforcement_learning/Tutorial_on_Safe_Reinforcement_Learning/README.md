@@ -29,7 +29,7 @@
 
 #### CMDP(Constrained MDP, Altman, 1999)
 
-- this forms the environment for safe RL
+- this forms the environment for safe RL accounting for the constraints (safety conditions)
 
 
 
@@ -137,7 +137,43 @@ In safe RL domain, broadly speaking, we have two categories, which is Model-free
 
 As we have looked, the $g(\theta)$ evaluates the trajectories and $J(\theta)$ represents the performance. Given them, we have two framework to hold the safety in RL. One is the tracking performance $max_{\theta} J(\theta)$, which contains few noisy experiments. And the other is the safety constraint $g(\theta) \geq 0$, which holds the safety for all experiments with probability $\geq 1 - \delta$
 
-### Bayesian Optimisation
+#### Bayesian Optimisation
+
+check my reviewing note on github
+
+https://github.com/Rowing0914/Reinforcement_Learning/blob/master/safe_reinforcement_learning/Bayes_optimisation/BayesOptimisation.pdf
+
+#### SafeOPT
+
+**Theorem (informal):**
+
+Under suitable conditions on the kernel and on $J, g$ there exists a function $T(\epsilon, \delta)$ such that for any $\epsilon > 0$ and $\delta > 0$, it holds with probability at least $1 - \delta$ that 
+
+- SafeOPT never makes an unsafe decision
+- After at most $T(\epsilon, \delta)$ iterations, it found an $\epsilon$-optimal reachable point
+
+$T(\epsilon, \delta) \in O\Big( \big( ||J||_k + ||g||_k \big)  \frac{\log^3{1/\delta}}{\epsilon^2} \Big) $
+
+- Safe Exploration for Optimization with Gaussian Processes by Y. Sui, A. Gotovos, J.W. Burdick, A. Krause
+- Bayesian Optimization with Safety Constraints: Safe and Automatic Parameter Tuning in Robotics by F.Berkenkamp, A.P. Schoellig, A. Krause
+- Safe Exploration for Active Learning with Gaussian Processes by J. Schreiter, D. Nguyen-Tuong, M. Eberts, B. Bischoff, H. Markert, M. Toussaint
+
+#### Modelling Context
+
+- Concept is derived from CGP-UCB introduced by [Contextual Gaussian Process Bandit Optimization by Andreas Krause, Cheng Soon Ong](http://www.ong-home.my/papers/krause11cgp-ucb.pdf)
+
+#### Case of Multiple sources of information for Bayes Optimisation
+
+- Virtual vs. Real: Trading Off Simulations and Physical Experiments in Reinforcement Learning with Bayesian Optimization by A. Marco, F. Berkenkamp, P. Hennig, A. Schöllig, A. Krause, S. Schaal, S. Trimpe, ICRA'17
+
+### Model-based RL
+
+#### Rendering exploration safe
+
+- Safe Control under Uncertainty D. Sadigh, A. Kapoor, RSS, 2016
+- Safe Exploration in Markov Decision Processes T.M. Moldovan, P. Abbeel, ICML, 2012
+- Safe Exploration in Finite Markov Decision Processes with Gaussian Processes M. Turchetta, F. Berkenkamp, A. Krause, NIPS, 2016
+- Safe Exploration and Optimization of Constrained MDPs using Gaussian Processes Akifumi Wachi, Yanan Sui, Yisong Yue, Masahiro Ono, AAAI, 2018
 
 
 
@@ -421,3 +457,39 @@ As we have looked, the $g(\theta)$ evaluates the trajectories and $J(\theta)$ re
     - What benefits are conferred by using constraints instead of fixed penalties?
 - Conclusions
   - In this article, we showed that a particular optimisation problem results in policy updates that are guaranteed to both improve return and satisfy constraints. This enabled the development of CPO, our policy search algorithm for CMDPs, which approximates the theoretically-guaranteed algorithm in a principled way. We demonstrated that CPO can train neural network policies with thousands of parameters on high-dimensional constrained control tasks, simultaneously maximising reward and approximately satisfying constraints. Our work represents a step towards applying reinforcement learning in the real world, where constraints on agent behaviour are sometimes necessary for the sake of safety.
+
+#### [Safe Exploration for Active Learning with Gaussian Processes by J. Schreiter, D. Nguyen-Tuong, M. Eberts, B. Bischoff, H. Markert, M. Toussaint](https://pdfs.semanticscholar.org/9afd/7874507eacdd0adc8e59b1e9ad5f0ce068a3.pdf)
+
+- Abstract
+  - In this paper, the problem of safe exploration in the active learning context is considered. Especially, they focus on the industrial system, e.g., combustion engines and gas turbines, where critical and unsafe measurements need to be avoided. The objective is to learn data-based regression models from such technical systems using a limited budget of measured, i.e. labelled, points while ensuring that critical regions of the considered systems are avoided during measurements. We propose an approach for learning such models and exploring new data regions based on Gaussian processes (GP’s). In particular, we employ a problem specific GP classifier to identify safe and unsafe regions, while using a differential entropy criterion for exploring relevant data regions. A theoretical analysis is shown for the proposed algorithm, where we provide an upper bound for the probability of failure.
+- Proposal
+  - Safe Active Learning with GPs
+- Experiments
+  - To demonstrate the efficiency and robustness of our safe exploration scheme in the active learning setting, we test the approach on a policy exploration task for the inverse pendulum hold up problem.
+- Conclusions
+  - Empirical evaluations on a toy example and on a policy search task for the inverse pendulum control confirm the safety bounds provided by the approach. Moreover, the experiments show the effectiveness of the presented algorithm, when selecting a near optimal input design, even under the induced safety constraint. The next steps will include evaluations on physical systems and – on the theoretical side – the error bounding of the resulting regression model, which is generally a hard problem.
+
+#### [Bayesian Optimization with Safety Constraints: Safe and Automatic Parameter Tuning in Robotics by F.Berkenkamp, A.P. Schoellig, A. Krause](https://arxiv.org/pdf/1602.04450.pdf)
+
+- Abstract
+  - In robotics, Manual parameter tuning has been dominant in practice. Optimization algorithms, such as Bayesian optimization, have been used to automate this process. However, these methods may evaluate unsafe parameters during the optimization process that lead to safety-critical system failures. SAFEOPT was developed recently and it guarantees that the performance of the system never falls below a critical value. However, coupling performance and safety is often not desirable in robotics. For example, high-gain controllers might achieve low average tracking error (performance), but can overshoot and violate input constraints. In this paper, we present a generalized algorithm that allows for multiple safety constraints separate from the objective. Given an initial set of safe parameters, the algorithm maximizes performance but only evaluates parameters that satisfy safety for all constraints with high probability.
+- Proposal
+  - SAFEOPT-MC (Multiple Constraints): the extension of SAFEOPT. Concept is derived from CGP-UCB introduced by [Contextual Gaussian Process Bandit Optimization by Andreas Krause, Cheng Soon Ong
+  - 1. Expanding the region of the optimization problem that is known to be feasible or safe as much as possible without violating the constraints,
+    2. Finding the optimal parameters within the current safe set.
+- Experiments
+  - we demonstrate Algorithm in experiments on a quadrotor vehicle, a Parrot AR.Drone 2.0.
+  - they chose Matern kernel for the kernel function in GP
+- Conclusions
+  - We presented a generalization of the Safe Bayesian Optimization algorithm of Sui et al. (2015) that allows multiple, separate safety constraints to be specified and applied it to nonlinear control problems on a quadrotor vehicle.
+
+#### [Virtual vs. Real: Trading Off Simulations and Physical Experiments in Reinforcement Learning with Bayesian Optimization by A. Marco, F. Berkenkamp, P. Hennig, A. Schöllig, A. Krause, S. Schaal, S. Trimpe, ICRA'17](https://las.inf.ethz.ch/files/ewrl18_SafeRL_tutorial.pdf)
+
+- Abstract
+  - In practice, the parameters of control policies are often tuned manually. RL seems effective for this problem though, it requires too many experiments to be practical. In this paper, we propose a solution to this problem by exploiting prior knowledge from simulations, which are readily available for most robotic platforms. Specifically, we extend Entropy Search, a Bayesian optimization algorithm that maximizes information gain from each experiment, to the case of multiple information sources. The result is a principled way to automatically combine cheap, but inaccurate information from simulations with expensive and accurate physical experiments in a cost-effective manner.
+- Proposal
+  - In this paper, we present a Bayesian optimization algorithm for multiple information sources. We use entropy to measure the information content of simulations and experiments. Since this is an appropriate unit of measure for the utility of both sources, our algorithm is able to compare physically meaningful quantities in the same units on either side, and trade off accuracy for cost.
+- Experiments
+  - We apply the resulting method to a cart-pole system, which confirms that the algorithm can find good control policies with fewer experiments than standard Bayesian optimization on the physical system only.
+- Conclusions
+  - The main contributions of the paper are (i) a novel Bayesian optimization algorithm that can trade off between costs of multiple information sources and (ii) the first application of such a framework to the problem of reinforcement learning and optimization of controller parameters
