@@ -7,12 +7,7 @@
 
 
 
-## Prerequisites
-
-#### Bayesian Optimisation
-
-- [Introduction to Bayesian Optimization by Javier Gonzalez Masterclass, 7-February, 2107 @Lancaster University](http://gpss.cc/gpmc17/slides/LancasterMasterclass_1.pdf)
-- [A Tutorial on Bayesian Optimization for Machine Learning by Ryan P. Adams School of Engineering and Applied Sciences Harvard University](https://www.iro.umontreal.ca/~bengioy/cifar/NCAP2014-summerschool/slides/Ryan_adams_140814_bayesopt_ncap.pdf)
+## To do
 
 #### Temporal Logic
 
@@ -30,6 +25,12 @@
 #### CMDP(Constrained MDP, Altman, 1999)
 
 - this forms the environment for safe RL accounting for the constraints (safety conditions)
+
+#### Model Predictive Control(MPC)
+
+https://myenigma.hatenablog.com/entry/2016/07/25/214014
+
+
 
 
 
@@ -174,6 +175,26 @@ $T(\epsilon, \delta) \in O\Big( \big( ||J||_k + ||g||_k \big)  \frac{\log^3{1/\d
 - Safe Exploration in Markov Decision Processes T.M. Moldovan, P. Abbeel, ICML, 2012
 - Safe Exploration in Finite Markov Decision Processes with Gaussian Processes M. Turchetta, F. Berkenkamp, A. Krause, NIPS, 2016
 - Safe Exploration and Optimization of Constrained MDPs using Gaussian Processes Akifumi Wachi, Yanan Sui, Yisong Yue, Masahiro Ono, AAAI, 2018
+
+#### A Bayesian Dynamics Model
+
+Modelling the dynamics of the environment by bayes theorem.Safe and Robust Learning Control with Gaussian Processes
+
+- In Linear case(linearise the nonlinear modelled dynamics of the environment):
+  - Safe and Robust Learning Control with Gaussian Processes F. Berkenkamp, A.P. Schoellig, ECC, 2015
+  - Regret Bounds for Robust Adaptive Control of the Linear Quadratic Regulator S. Dean, H. Mania, N. Matni, B. Recht, S. Tu, arXiv, 2018
+- Forwards-propagating uncertain, nonlinear dynamics(Outer approximation contains true dynamics for all time steps with probability at least)
+  - Learning-based Model Predictive Control for Safe Exploration T. Koller, F. Berkenkamp, M. Turchetta, A. Krause, CDC, 2018
+- Model predictive control references
+  - Learning-based Model Predictive Control for Safe Exploration T. Koller, F. Berkenkamp, M. Turchetta, A. Krause, CDC, 2018
+  - Reachability-Based Safe Learning with Gaussian Processes A.K. Akametalu, J.F. Fisac, J.H. Gillula, S. Kaynama, M.N. Zeilinger, C.J. Tomlin, CDC, 2014
+  - Robust constrained learning-based NMPC enabling reliable mobile robot path tracking C.J. Ostafew, A.P. Schoellig, T.D. Barfoot, IJRR, 2016
+  - Data-Efficient Reinforcement Learning with Probabilistic Model Predictive Control S. Kamthe, M.P. Deisenroth, AISTATS, 2018
+  - Chance Constrained Model Predictive Control A.T. Schwarm, M. Nikolaou, AlChE, 1999
+
+#### Region of attraction
+
+- Safe Model-based Reinforcement Learning with Stability Guarantees F. Berkenkamp, M. Turchetta, A.P. Schoellig, A. Krause, NIPS, 2017
 
 
 
@@ -472,7 +493,7 @@ $T(\epsilon, \delta) \in O\Big( \big( ||J||_k + ||g||_k \big)  \frac{\log^3{1/\d
 #### [Bayesian Optimization with Safety Constraints: Safe and Automatic Parameter Tuning in Robotics by F.Berkenkamp, A.P. Schoellig, A. Krause](https://arxiv.org/pdf/1602.04450.pdf)
 
 - Abstract
-  - In robotics, Manual parameter tuning has been dominant in practice. Optimization algorithms, such as Bayesian optimization, have been used to automate this process. However, these methods may evaluate unsafe parameters during the optimization process that lead to safety-critical system failures. SAFEOPT was developed recently and it guarantees that the performance of the system never falls below a critical value. However, coupling performance and safety is often not desirable in robotics. For example, high-gain controllers might achieve low average tracking error (performance), but can overshoot and violate input constraints. In this paper, we present a generalized algorithm that allows for multiple safety constraints separate from the objective. Given an initial set of safe parameters, the algorithm maximizes performance but only evaluates parameters that satisfy safety for all constraints with high probability.
+  - In robotics, Manual parameter tuning has been dominant in practice. Optimisation algorithms, such as Bayesian optimisation, have been used to automate this process. However, these methods may evaluate unsafe parameters during the optimisation process that lead to safety-critical system failures. SAFEOPT was developed recently and it guarantees that the performance of the system never falls below a critical value. However, coupling performance and safety is often not desirable in robotics. For example, high-gain controllers might achieve low average tracking error (performance), but can overshoot and violate input constraints. In this paper, we present a generalised algorithm that allows for multiple safety constraints separate from the objective. Given an initial set of safe parameters, the algorithm maximises performance but only evaluates parameters that satisfy safety for all constraints with high probability.
 - Proposal
   - SAFEOPT-MC (Multiple Constraints): the extension of SAFEOPT. Concept is derived from CGP-UCB introduced by [Contextual Gaussian Process Bandit Optimization by Andreas Krause, Cheng Soon Ong
   - 1. Expanding the region of the optimization problem that is known to be feasible or safe as much as possible without violating the constraints,
@@ -492,4 +513,109 @@ $T(\epsilon, \delta) \in O\Big( \big( ||J||_k + ||g||_k \big)  \frac{\log^3{1/\d
 - Experiments
   - We apply the resulting method to a cart-pole system, which confirms that the algorithm can find good control policies with fewer experiments than standard Bayesian optimization on the physical system only.
 - Conclusions
-  - The main contributions of the paper are (i) a novel Bayesian optimization algorithm that can trade off between costs of multiple information sources and (ii) the first application of such a framework to the problem of reinforcement learning and optimization of controller parameters
+  - The main contributions of the paper are (i) a novel Bayesian optimisation algorithm that can trade off between costs of multiple information sources and (ii) the first application of such a framework to the problem of reinforcement learning and optimisation of controller parameters
+
+#### [Safe Exploration in Markov Decision Processes T.M. Moldovan, P. Abbeel, ICML, 2012](https://icml.cc/2012/papers/838.pdf)
+
+- Abstract
+  - In environments with uncertain dynamics exploration is necessary to learn how to perform well. Existing reinforcement learning algorithms provide strong exploration guarantees, but they tend to rely on an **ergodicity assumption**. The essence of ergodicity is that any state is eventually reachable from any other state by following a suitable policy. This assumption allows for exploration algorithms that operate by simply favouring states that have rarely been visited before. But in practice, most physical systems don’t satisfy the ergodicity assumption. In this paper we address the need for safe exploration methods in Markov decision processes. We first propose a general formulation of safety through ergodicity. We then present an efficient algorithm for guaranteed safe, but potentially sub-optimal, exploration. At the core is an optimisation formulation in which the constraints restrict attention to a subset of the guaranteed safe policies and the objective flavors exploration policies.
+- Proposal
+  - they have proposed the Safe exploration algorithm which works on the ergodicity environment by finding the safe and potentially sub-optimal policies.
+- Experiments
+  - Our experiments, which include a Martian terrain exploration problem, show that our method is able to explore better than classical exploration methods.
+- Conclusions
+  - In addition to the safety formulation, out framework also supports a number of other safety criteria such that, Stricter ergodicity ensuring that return is possible within some horizon, H, not just eventually, with probability and so on.
+
+#### [Safe Exploration in Finite Markov Decision Processes with Gaussian Processes M. Turchetta, F. Berkenkamp, A. Krause, NIPS, 2016](https://arxiv.org/pdf/1606.04753.pdf)
+
+- Abstract
+
+  - In this paper, we address the problem of safely exploring finite Markov decision processes (MDP). We define safety in terms of an a priori unknown safety constraint that depends on states and actions and satisfies certain regularity conditions expressed via a Gaussian process prior. We develop a novel algorithm, SAFEMDP, for this task and prove that it completely explores the safely reachable part of the MDP without violating the safety constraint. To achieve this, it cautiously explores safe states and actions in order to gain statistical confidence about the safety of unvisited state-action pairs from noisy observations collected while navigating the environment.
+- Proposal
+
+  - SAFEMDP
+  - We introduce SAFEMDP, a novel algorithm for safe exploration in MDPs. We model safety via an a priori unknown constraint that depends on state-action pairs. Starting from an initial set of states and actions that are known to satisfy the safety constraint, the algorithm exploits the regularity assumptions on the constraint function in order to determine if nearby, unvisited states are safe. This leads to safe exploration, where only state-actions pairs that are known to fulfil the safety constraint are evaluated
+- Experiments
+
+  - We demonstrate our method on digital terrain models for the task of exploring an unknown map with a rover
+- Conclusions
+  - We presented SAFEMDP, an algorithm to safely explore a priori unknown environments. We used a Gaussian process to model the safety constraints, which allows the algorithm to reason about the safety of state-action pairs before visiting them. An important aspect of the algorithm is that it considers the transition dynamics of the MDP in order to ensure that there is a safe return route before visiting states. We proved that the algorithm is capable of exploring the full safely reachable region with few measurements, and demonstrated its practicality and performance in experiments.
+
+#### [Safe Exploration and Optimization of Constrained MDPs using Gaussian Processes Akifumi Wachi, Yanan Sui, Yisong Yue, Masahiro Ono, AAAI, 2018](http://www.yisongyue.com/publications/aaai2018_safe_mdp.pdf)
+
+- Abstract
+  - Extension of SAFEMDP
+  - We propose a novel approach to balance this trade-off(exploring the safety function, exploring the reward function, and exploiting acquired knowledge to maximise reward.). Specifically, our approach explores unvisited states *selectively*; that is, it priorities the exploration of a state if visiting that state significantly improves the knowledge on the achievable cumulative reward. Our approach relies on a novel information gain criterion based on Gaussian Process representations of the reward and safety functions.
+- Proposal
+  - their approach can account for the slippage of the mars-rover
+  - their r approach employs two MDPs, which we call Optimistic and Pessimistic MDPs, and uses the difference in the value functions as the information gain criterion. Our GP safety function yields three classes of states: safe, unsafe, and uncertain. The only difference between the Optimistic and Pessimistic MDPs is that uncertain states are considered safe former and unsafe in the latter. Using this criterion, the agent is motivated to explore uncertain states that could result in high cumulative reward if they are determined safe
+- Experiments
+  - We demonstrate the effectiveness of our approach on a range of experiments, including a simulation using the real Martian terrain data.
+- Conclusions
+  - We presented a novel approach for exploring and optimising safety constrained MDPs. By modelling a priori unknown reward and safety via GPs, an agent can classify state space into safe, uncertain, and unsafe regions.
+
+#### [Safe and Robust Learning Control with Gaussian Processes F. Berkenkamp, A.P. Schoellig, ECC, 2015](http://www.dynsyslab.org/wp-content/papercite-data/pdf/berkenkamp-ecc15.pdf)
+
+- Abstract
+  - This paper introduces a learning-based robust control algorithm that provides robust stability and performance guarantees during learning. Traditional robust control approaches have not considered online adaptation of the model and its uncertainty before. As a result, their controllers do not improve performance during operation. The approach uses Gaussian process (GP) regression based on data gathered during operation to update an initial model of the system and to gradually decrease the uncertainty related to this model. Embedding this data-based update scheme in a robust control framework guarantees stability during the learning process. In particular, this paper considers a stabilization task, linearizes the nonlinear, GP-based model around a desired operating point, and solves a convex optimization problem to obtain a linear robust controller.
+- Proposal
+  - In this paper, a method that combines online learning with robust control theory has been introduced with the goal of designing a learning controller that guarantees stability while gradually improving performance.
+- Experiments
+  - The resulting performance improvements due to the learning-based controller are demonstrated in experiments on a quadrotor vehicle
+- Conclusions
+  - In this paper, a method that combines online learning with robust control theory has been introduced with the goal of designing a learning controller that guarantees stability while gradually improving performance. Experiments on a quadrotor vehicle showed that the controller performance improved as more data became available. Ultimately, the GP framework has proven to be a powerful tool to combine nonlinear learning methods with standard robust control theory.
+
+#### [Learning-based Model Predictive Control for Safe Exploration T. Koller, F. Berkenkamp, M. Turchetta, A. Krause, CDC, 2018](https://arxiv.org/pdf/1803.08287.pdf)
+
+- Abstract
+  - In model-based reinforcement learning, we aim to learn the dynamics of an unknown system from data, and based on the model, derive a policy that optimises the long-term behaviour of the system. However, these methods typically do not provide any safety guarantees, which prevents their use in safety-critical, real-world applications. In this paper, we present a learning-based model predictive control scheme that can provide provable high-probability safety guarantees. Unlike
+    previous approaches, we do not assume that model uncertainties are independent. Based on these predictions, we guarantee that trajectories satisfy safety constraints. Moreover, we use a terminal set constraint to recursively guarantee the existence of safe control actions at every iteration.
+- Proposal
+  - SafeMPC algorithm
+  - We combine ideas from robust control and GP-based RL to design a MPC(MODEL PREDICTIVE CONTROL) scheme that recursively guarantees the existence of a safety trajectory that satisfies the constraints of the system
+- Experiments
+  - We apply the algorithm to safely explore the dynamics of an inverted pendulum simulation.
+- Conclusions
+  - We introduced SAFEMPC, a learning-based MPC scheme that can safely explore partially unknown systems. The algorithm is based on a novel uncertainty propagation technique that uses a reliable statistical model of the system. As we gather more data from the system and update our statistical mode, the model becomes more accurate and control performance improves, all while maintaining safety guarantees throughout the learning process
+
+#### [Reachability-Based Safe Learning with Gaussian Processes A.K. Akametalu, J.F. Fisac, J.H. Gillula, S. Kaynama, M.N. Zeilinger, C.J. Tomlin, CDC, 2014](http://www.ece.ubc.ca/~kaynama/papers/CDC2014_safelearning.pdf)
+
+- Abstract
+  - Recent approaches successfully introduce safety based on reachability analysis, determining a safe region of the state space where the system can operate. However, overly constraining the freedom of the system can negatively affect performance, while attempting to learn less conservative safety constraints might fail to preserve safety if the learned constraints are inaccurate. We propose a novel method that uses a principled approach to learn the system’s unknown dynamics based on a Gaussian process model and iteratively approximates the maximal safe set. 
+- Proposal
+  - GP regression is used to infer the disturbance set from past observations of the dynamics; this disturbance set is used to conduct reachability analysis and obtain a safety function and an optimal safe control policy.
+- Experiments
+  - We demonstrate our algorithm on simulations of a cart-pole system and on an experimental quadrotor application and show how our proposed scheme succeeds in preserving safety where current approaches fail to avoid an unsafe condition.
+- Conclusions
+  - We have introduced a general reachability-based safe learning algorithm that leverages GPs to learn a model of the system disturbances and employs a novel control strategy based on online model validation, providing stronger safety guarantees than current state-of-the-art reachability-based frameworks. 
+
+#### [Robust constrained learning-based NMPC enabling reliable mobile robot path tracking C.J. Ostafew, A.P. Schoellig, T.D. Barfoot, IJRR, 2016](http://www.dynsyslab.org/wp-content/papercite-data/pdf/ostafew-ijrr16.pdf)
+
+- Abstract
+  - This paper presents a Robust Constrained Learning-based Nonlinear Model Predictive Control (RC LB-NMPC) algorithm for path-tracking in off-road terrain. In this work our goal is to use learning to generate low-uncertainty, non-parametric models in situ. Based on these models, the predictive controller computes both linear and angular velocities in real-time, such that the robot drives at or near its capabilities while respecting path and localisation constraints. The result is a robust, learning controller that provides safe, conservative control during initial trials when model uncertainty is high and converges to high-performance, optimal control during later trials when model uncertainty is reduced with experience
+- Proposal
+  - In previous work, we demonstrated unconstrained LB-NMPC, where tracking errors were reduced using real-world experience instead of pre-programming accurate analytical models (Ostafew et al., 2015a). This work represents a major extension where we use the learned model uncertainty to compute and apply robust state and input constraints.
+  - This paper presents a Robust Constrained Learning-based Nonlinear Model Predictive Control (RC LB-NMPC) algorithm for path-tracking in off-road terrain.
+- Experiments
+  - The paper presents experimental results, including over 5 km of travel by a 900 kg skid-steered robot at speeds of up to 2.0 m/s. 
+- Conclusions
+  - In summary, this paper presents a Robust Constrained Learning-based Nonlinear Model Predictive Control (RCLB-NMPC) algorithm for a path-repeating, mobile robot operating in challenging off-road terrain. The goal is to guarantee constraint satisfaction while increasing performance through learning.
+
+#### [Data-Efficient Reinforcement Learning with Probabilistic Model Predictive Control S. Kamthe, M.P. Deisenroth, AISTATS, 2018](http://proceedings.mlr.press/v84/kamthe18a/kamthe18a.pdf)
+
+- Abstract
+  - To reduce the number of system interactions while simultaneously handling constraints, we propose a modelbased RL framework based on probabilistic Model Predictive Control (MPC). In particular, we propose to learn a probabilistic transition model using Gaussian Processes (GPs) to incorporate model uncertainty into longterm predictions, thereby, reducing the impact of model errors. We then use MPC to find a control sequence that minimises the expected long-term cost.
+- Proposal
+  - The contributions of this paper are the following: 1) We propose a new ‘deterministic’ formulation for probabilistic MPC with learned GP models and uncertainty propagation for long-term planning. 2) This reformulation allows us to apply [Pontryagin’s Maximum Principle (PMP)](https://en.wikipedia.org/wiki/Pontryagin%27s_maximum_principle) for the open-loop planning stage of probabilistic MPC with GPs. Using the PMP we can handle control constraints in a principled fashion while still maintaining necessary conditions for optimality. 3) The proposed algorithm is not only theoretically justified by optimal control theory, but also achieves a state-of-the-art data efficiency in RL while maintaining the probabilistic formulation. 4) Our method can handle state and control constraints while preserving its data efficiency and optimality properties.
+- Experiments
+  - We evaluate the quality of our algorithm in two ways: First, we assess whether probabilistic MPC leads to faster learning compared with PILCO, the current state of the art in terms of data efficiency. Second, we assess the impact of state constraints while performing the same task.
+- Conclusions
+  - We proposed an algorithm for data-efficient RL that is based on probabilistic MPC with learned transition models using Gaussian processes. By exploiting Pontryagin’s maximum principle our algorithm can naturally deal with state and control constraints.
+
+#### [Safe Model-based Reinforcement Learning with Stability Guarantees F. Berkenkamp, M. Turchetta, A.P. Schoellig, A. Krause, NIPS, 2017](https://papers.nips.cc/paper/6692-safe-model-based-reinforcement-learning-with-stability-guarantees.pdf)
+
+- Abstract
+  - Reinforcement learning is a powerful paradigm for learning optimal policies from experimental data. However, to find optimal policies, most reinforcement learning algorithms explore all possible actions, which may be harmful for real-world systems. In this paper, we present a learning algorithm that explicitly considers safety, defined in terms of stability guarantees. Specifically, we extend control-theoretic results on Lyapunov stability verification and show how to use statistical models of the dynamics to obtain high-performance control policies with provable stability certificates.
+- Proposal
+- Experiments
+- Conclusions
