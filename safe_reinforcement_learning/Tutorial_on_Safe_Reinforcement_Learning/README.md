@@ -30,6 +30,10 @@
 
 https://myenigma.hatenablog.com/entry/2016/07/25/214014
 
+#### Control theory(includes major theories, MPC, region of attraction and Lyapunov functions)
+
+http://people.ee.ethz.ch/~apnoco/Lectures2018/NLSC_lecture_notes_2018.pdf
+
 
 
 
@@ -196,7 +200,11 @@ Modelling the dynamics of the environment by bayes theorem.Safe and Robust Learn
 
 - Safe Model-based Reinforcement Learning with Stability Guarantees F. Berkenkamp, M. Turchetta, A.P. Schoellig, A. Krause, NIPS, 2017
 
+#### Lyapunov function
 
+- Safe Model-based Reinforcement Learning with Stability Guarantees F. Berkenkamp, M. Turchetta, A.P. Schoellig, A. Krause, NIPS, 2017
+- Lyapunov Design for Safe Reinforcement Learning T.J. Perkings, A.G. Barto, JMLR, 2002
+- The Lyapunov Neural Network: Adaptive Stability Certification for Safe Learning of Dynamic Systems S.M. Richards, F. Berkenkamp, A. Krause
 
 
 
@@ -617,5 +625,14 @@ Modelling the dynamics of the environment by bayes theorem.Safe and Robust Learn
 - Abstract
   - Reinforcement learning is a powerful paradigm for learning optimal policies from experimental data. However, to find optimal policies, most reinforcement learning algorithms explore all possible actions, which may be harmful for real-world systems. In this paper, we present a learning algorithm that explicitly considers safety, defined in terms of stability guarantees. Specifically, we extend control-theoretic results on Lyapunov stability verification and show how to use statistical models of the dynamics to obtain high-performance control policies with provable stability certificates.
 - Proposal
+  - SAFELYAPUNOVLEARNING
+  - To satisfy the specified safety constraints for safe learning, we require a tool
+    to determine whether individual states and actions are safe. In control theory, this safety is defined
+    through the region of attraction, which can be computed for a fixed policy using Lyapunov functions.
+  - We introduce a novel algorithm that can safely optimize policies in continuous state-action spaces while providing high-probability safety guarantees in terms of stability
 - Experiments
+  - In our experiments, we show how the resulting algorithm can safely optimise a neural network policy on a simulated inverted pendulum, without the pendulum ever falling down
 - Conclusions
+  - we showed how to safely optimise policies and give stability certificates based on statistical models of the dynamics. Moreover, we provided theoretical safety and exploration guarantees for an algorithm that can drive the system to desired state-action pairs during learning
+
+#### [Lyapunov Design for Safe Reinforcement Learning T.J. Perkings, A.G. Barto, JMLR, 2002](http://www.jmlr.org/papers/volume3/perkins02a/perkins02a.pdf)
