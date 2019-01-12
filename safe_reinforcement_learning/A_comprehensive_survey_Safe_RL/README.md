@@ -15,8 +15,6 @@ This is the notes for the research paper below
 
 ## Papers
 
-### Worst-case Criterion
-
 #### [Matthias Heger. Risk and reinforcement learning: concepts and dynamic programming. ZKW-Bericht. ZKW, 1994a.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.45.8264&rep=rep1&type=pdf)
 
 - Abstract
@@ -114,5 +112,14 @@ This is the notes for the research paper below
 - Conclusions
   - This work presented a novel framework for solving large-scale robust Markov decision processes. , such problems are beyond the capabilities of previous studies, which focused on exact solutions and hence suffer from the “curse of dimensionality”. Our approach to tackling the planning problem is through reinforcement learning methods: we reduce the dimensionality of the robust value function using linear function approximation, and employ an iterative sampling based procedure to learn the approximation weights. We presented both formal guarantees and empirical evidence to the usefulness of our approach in general robust MDPs, and optimal stopping problems in particular.
 
-### Risk-Sensitive Criterion
+#### [Kurt Driessens and Saso Dzeroski. Integrating guidance into relational reinforcement learning. Machine Learning, 57(3):271–304, December 2004. ISSN 0885-6125](http://kt.ijs.si/SasoDzeroski/pdfs/2004/2004-DriessensEtAl-ML.pdf)
+
+- Abstract
+  - two problems in conventional RL approaches.
+    - First, learning the Q-function in tabular form may be infeasible because of the excessive amount of memory needed to store the table, and because the Q-function only converges after each state has been visited multiple times
+    - Second, rewards in the state space may be so sparse that with random exploration they will only be discovered extremely slowly
+  - The first problem is often solved by learning a generalization of the encountered examples (e.g., using a neural net or decision tree) But, second one has not been addressed yet. The problem of sparse rewards has not been addressed for RRL. So, This paper presents a solution based on the use of “reasonable policies” to provide guidance. Different types of policies and different strategies to supply guidance through these policies are discussed and evaluated experimentally in several relational domains to show the merits of the approach.
+- Proposal
+- Experiments
+- Conclusions
 
