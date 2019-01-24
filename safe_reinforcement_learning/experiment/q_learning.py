@@ -77,7 +77,7 @@ def q_hat_learning(env, num_episodes, discount_factor=1.0, alpha=0.5, epsilon=0.
         for t in itertools.count():
             
             # Take a step
-            # env.render()
+            env.render()
             action_probs = policy(state)
             action = np.random.choice(np.arange(len(action_probs)), p=action_probs)
             next_state, reward, done, _ = env.step(action)
