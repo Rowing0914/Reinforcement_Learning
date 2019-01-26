@@ -10,7 +10,7 @@
 
 ## My note
 
-![image1](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/multi_objective_RL/literature_review/images/1.JPG)
+![image1](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/multi_objective_RL/literature_review/images/1.JPG)
 ![image2](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/multi_objective_RL/literature_review/images/2.JPG)
 ![image3](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/multi_objective_RL/literature_review/images/3.JPG)
 ![image4](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/multi_objective_RL/literature_review/images/4.JPG)
