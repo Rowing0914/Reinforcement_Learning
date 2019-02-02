@@ -8,7 +8,8 @@ import sys
 if "../" not in sys.path:
     sys.path.append("../")
 
-from envs.blackjack import BlackjackEnv, print_observation
+from utils.envs.blackjack import BlackjackEnv
+
 
 def make_epsilon_greedy_policy(Q, epsilon, nA):
     def policy(observation):

@@ -2,12 +2,12 @@
 # First-visit MC prediction, for estimating state-value
 
 from collections import defaultdict
-import numpy as np
 import sys
 if "../" not in sys.path:
     sys.path.append("../")
 
-from envs.blackjack import BlackjackEnv, print_observation
+from utils.envs.blackjack import BlackjackEnv
+
 
 def First_Visit_MC(env, state_value, policy, discount_factor=1.0, num_episodes=1000):
 	Returns = defaultdict(float)

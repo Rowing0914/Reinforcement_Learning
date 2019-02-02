@@ -8,7 +8,8 @@ import sys
 if "../" not in sys.path:
     sys.path.append("../")
 
-from envs.blackjack import BlackjackEnv, print_observation
+from utils.envs.blackjack import BlackjackEnv
+
 
 def make_epsilon_greedy_policy(Q, epsilon, nA):
 	def target_policy(observation):
@@ -24,8 +25,6 @@ def make_epsilon_greedy_policy(Q, epsilon, nA):
 
 def Off_Policy_MC(env, action_value, discount_factor=1.0, num_episodes=1000):
 	C = defaultdict(lambda: np.zeros(env.action_space.n))
-	Returns = defaultdict(float)
-	Returns_count = defaultdict(float)
 	target_policy, behaviour_policy = make_epsilon_greedy_policy(action_value, discount_factor, env.nA)
 
 	for i in range(num_episodes):

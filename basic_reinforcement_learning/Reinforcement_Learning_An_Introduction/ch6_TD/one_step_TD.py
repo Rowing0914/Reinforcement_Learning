@@ -8,7 +8,7 @@ import sys
 if "../" not in sys.path:
     sys.path.append("../")
 
-from envs.windy_gridworld import WindyGridworldEnv
+from utils.envs.windy_gridworld import WindyGridworldEnv
 
 def make_epsilon_greedy_policy(Q, epsilon, nA):
 	def policy(observation):
@@ -22,8 +22,6 @@ def TD_Prediction(env, state_value, alpha=0.01, discount_factor=1.0, num_episode
 	policy = make_epsilon_greedy_policy(state_value, discount_factor, env.nA)
 
 	for i in range(num_episodes):
-		# observe the environment and store the observation
-		experience = []
 		# this satisfies the exploraing start condition
 		state = env.reset()
 		# generate an episode

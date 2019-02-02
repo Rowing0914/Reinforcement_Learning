@@ -6,7 +6,7 @@ import numpy as np
 if "../" not in sys.path:
     sys.path.append("../")
 
-from envs.grid_world import GridworldEnv
+from utils.envs.grid_world import GridworldEnv
 
 def Policy_Evaluation(env, policy, state_value, gamma, theta):
 	while True:
