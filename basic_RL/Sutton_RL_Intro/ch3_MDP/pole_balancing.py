@@ -3,7 +3,7 @@ import gym
 
 env = gym.make('CartPole-v0')
 
-for episode in range(10):
+for episode in range(1000):
 	observation = env.reset()
 	for t in range(100):
 		env.render()
