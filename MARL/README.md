@@ -37,7 +37,7 @@ And also I will explain a variety of algorithms which support the evolution of m
 
 [table1: Breakdown of MARL algorithms by the type of task they address. From[1]](http://www.dcsc.tudelft.nl/~bdeschutter/pub/rep/07_019.pdf)
 
-![table1](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/multi_agent_reinforcement_learning_notes/images/table1.PNG)
+![table1](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/MARL/images/table1.PNG)
 
 
 
@@ -49,7 +49,7 @@ MARL stands on the various domains. For instance, as we will investigate more la
 
 ## Materials
 
-1. [Intro to Multiagent Reinforcement Learning](https://github.com/Rowing0914/multi_agent_reinforcement_learning_notes/blob/master/review_intro_ppt/README.md)
+1. [Intro to Multiagent Reinforcement Learning](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/MARL/review_intro_ppt/README.md)
 
 
 
@@ -58,4 +58,3 @@ MARL stands on the various domains. For instance, as we will investigate more la
 1. [Bus¸oniu, L., Babuska, R., De Schutter, B.: A comprehensive survey of multi-agent re ˇ inforcement
    learning. IEEE Transactions on Systems, Man, and Cybernetics. Part C: Applications
    and Reviews 38(2), 156–172 (2008)](http://www.dcsc.tudelft.nl/~bdeschutter/pub/rep/07_019.pdf)
-2. 

@@ -7,10 +7,8 @@ This is the repo for storing the reviewing note regarding to several domains in 
 * [basic_RL](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/basic_RL): 
 
   * [UCL course on RL led by David Silver](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html)
-
-  * the draft of the great textbook of "Reinforcement Learning An Introduction"  by Richard S. Sutton and Andrew G. Barto
-
-    [Introduction to Reinforcement Learning with Function Approximation by R.Sutton, NIPS 2015](http://media.nips.cc/Conferences/2015/tutorialslides/SuttonIntroRL-nips-2015-tutorial.pdf)
+  * "Reinforcement Learning An Introduction" by Richard S. Sutton and Andrew G. Barto
+  * [Introduction to Reinforcement Learning with Function Approximation by R.Sutton, NIPS 2015](http://media.nips.cc/Conferences/2015/tutorialslides/SuttonIntroRL-nips-2015-tutorial.pdf)
 
 * [DRL(Deep RL)](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/DRL): 
 
