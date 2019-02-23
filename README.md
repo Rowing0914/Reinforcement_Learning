@@ -4,7 +4,7 @@ This is the repo for storing the reviewing note regarding to several domains in 
 
 
 
-* [basic_reinforcement_learning](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/basic_reinforcement_learning): 
+* [basic_RL](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/basic_RL): 
 
   * [UCL course on RL led by David Silver](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html)
 
@@ -12,13 +12,13 @@ This is the repo for storing the reviewing note regarding to several domains in 
 
     [Introduction to Reinforcement Learning with Function Approximation by R.Sutton, NIPS 2015](http://media.nips.cc/Conferences/2015/tutorialslides/SuttonIntroRL-nips-2015-tutorial.pdf)
 
-* [deep_reinforcement_learning](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/deep_reinforcement_learning): 
+* [DRL(Deep RL)](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/DRL): 
 
   * [A Brief Survey of Deep ReinforcementLearning](https://arxiv.org/pdf/1708.05866.pdf)
 
-* [multi_agent_reinforcement_learning_notes](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/multi_agent_reinforcement_learning_notes): about multi-agent reinforcement learning (MARL so called)
+* [MARL](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/MARL): Multi-Agent RL
 
-* [multi_objective_RL](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/multi_objective_RL): about RL algorithms dealing with the case where learning agent has to learn the preferences among the multiple goals in the environment
+* [MORL(Multi-objective RL)](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/multi_objective_RL): about RL algorithms dealing with the case where learning agent has to learn the preferences among the multiple goals in the environment
 
   * [Multiobjective Reinforcement Learning: A Comprehensive Overview by C.Liu et al., 2015](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6918520)
   * [A Multi-Objective Deep Reinforcement Learning Framework by TT.Nguyen, 2018](https://arxiv.org/pdf/1803.02965.pdf)
