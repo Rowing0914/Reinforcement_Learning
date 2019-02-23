@@ -41,7 +41,7 @@ And also I will explain a variety of algorithms which support the evolution of m
 
 
 
-MARL stands on the various domains. For instance, as we will investigate more later, game theory forms the basement of most of algorithms in MARL. In fact, the most challenging part of MARL is the definition of the game setting. In this context, the game setting means the way to define the game and agents' behaviours. As a running example, I would like to recommend you to have a look at the Prisoner's Dilemma(Merrill Flood and Melvin Dresher in 1950). In the game, there are two players who have two actions, which is confess or stays silent respectively. The connection between Game theory and Reinforcement learning exists at this point. Game theory allows us to formally and radically state the game. And Reinforcement Learning defines the learning methods for the agents to approach to the optimal point. Again, the optimal points do depend on the game settings. By the way, I strongly recommend you to skim through the introductory material ([Intro to Multiagent Reinforcement Learning](https://github.com/Rowing0914/multi_agent_reinforcement_learning_notes/blob/master/review_intro_ppt/README.md)) to understand the basic of MARL.
+MARL stands on the various domains. For instance, as we will investigate more later, game theory forms the basement of most of algorithms in MARL. In fact, the most challenging part of MARL is the definition of the game setting. In this context, the game setting means the way to define the game and agents' behaviours. As a running example, I would like to recommend you to have a look at the Prisoner's Dilemma(Merrill Flood and Melvin Dresher in 1950). In the game, there are two players who have two actions, which is confess or stays silent respectively. The connection between Game theory and Reinforcement learning exists at this point. Game theory allows us to formally and radically state the game. And Reinforcement Learning defines the learning methods for the agents to approach to the optimal point. Again, the optimal points do depend on the game settings. By the way, I strongly recommend you to skim through the introductory material ([Intro to Multiagent Reinforcement Learning](https://github.com/Rowing0914/Reinforcement_Learning/blob/master/MARL/review_intro_ppt/README.md)) to understand the basic of MARL.
 
 
 
@@ -55,6 +55,6 @@ MARL stands on the various domains. For instance, as we will investigate more la
 
 ## References
 
-1. [Bus¸oniu, L., Babuska, R., De Schutter, B.: A comprehensive survey of multi-agent re ˇ inforcement
+1. [Bus¸oniu, L., Babuska, R., De Schutter, B.: A comprehensive survey of multi-agent reinforcement
    learning. IEEE Transactions on Systems, Man, and Cybernetics. Part C: Applications
    and Reviews 38(2), 156–172 (2008)](http://www.dcsc.tudelft.nl/~bdeschutter/pub/rep/07_019.pdf)
