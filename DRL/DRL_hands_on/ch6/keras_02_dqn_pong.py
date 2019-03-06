@@ -24,6 +24,8 @@ EPSILON_MIN = 0.01
 EPSILON_DECAY = 0.995
 EPSILON_DECAY_LAST_FRAME = 10**5
 
+IMAGE_SIZE = (4,84,84)
+
 
 DEFAULT_ENV_NAME = "BreakoutDeterministic-v4"
 # DEFAULT_ENV_NAME = "PongNoFrameskip-v4"
@@ -42,18 +44,22 @@ class DQN:
 		self._create_model()
 
 	def _create_model(self):
+		"""
+		This creates the model on memory
+		** for learning purporse I did hardcode most of parameters
+		"""
 		model = Sequential()
-		model.add(Conv2D(32, input_shape=(4,84,84), kernel_size=8, strides=4, activation='relu', data_format='channels_first'))
+		model.add(Conv2D(32, input_shape=IMAGE_SIZE, kernel_size=8, strides=4, activation='relu', data_format='channels_first'))
 		model.add(Conv2D(64, kernel_size=4, strides=2, activation='relu'))
 		model.add(Conv2D(64, kernel_size=3, strides=1, activation='relu'))
 		model.add(Flatten())
 		model.add(Dense(512, activation='relu'))
-		model.add(Dense(self.env.action_space.n))
+		model.add(Dense(self.env.action_space.n)) # calcualte Q-vaules for each action
 		model.compile(loss='mse', optimizer=Adam(lr=0.001, decay=1e-6), metrics=['accuracy'])
 		model.summary()
 
 		self.model        = model
-		self.target_model = clone_model(model)
+		self.target_model = clone_model(model) # clone the independent model
 
 	def epsilon_greedy(self, state):
 		"""
@@ -97,11 +103,14 @@ class DQN:
 
 		# fit() vs train_on_batch() in keras? => https://stackoverflow.com/questions/49100556/what-is-the-use-of-train-on-batch-in-keras
 		# update Q-network using the tartet network's output
-		# X = states, y = output of target network
+		# X: states, y: output of target network
 		self.model.train_on_batch(states, expected_state_action_values)
 		
 
 	def target_train(self):
+		"""
+		synchronise the target model to main moodel by replicating the weights
+		"""
 		weights = self.model.get_weights()
 		target_weights = self.target_model.get_weights()
 		for i in range(len(target_weights)):
@@ -115,10 +124,9 @@ def logger(total_rewards, best_mean_reward, frame_idx, ts_frame, ts):
 	speed = (frame_idx - ts_frame) / (time.time() - ts)
 	ts_frame = frame_idx
 	ts = time.time()
+	# average reward over the most recent 100 stpes
 	mean_reward = np.mean(total_rewards[-100:])
-	print("%d: done %d games, mean reward %.3f, speed %.2f f/s" % (
-		frame_idx, len(total_rewards), mean_reward, speed
-	))
+	print("%d: done %d games, mean reward %.3f, speed %.2f f/s" % ( frame_idx, len(total_rewards), mean_reward, speed ))
 	if best_mean_reward is None or best_mean_reward < mean_reward:
 		best_mean_reward = mean_reward
 	return best_mean_reward, mean_reward, frame_idx, ts_frame, ts
@@ -156,6 +164,7 @@ if __name__ == "__main__":
 		elif len(dqn_agent.memory) >= REPLAY_START_SIZE:
 			# Update Q-Network
 			dqn_agent.replay()
+			# save model
 			# dqn_agent.save_model("success.model")
 		
 		state = new_state
