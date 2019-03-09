@@ -3,8 +3,8 @@ import numpy as np
 from gym.wrappers import Monitor
 from load_policy import Duelling_DQN_Agent, DQN_Agent
 
-DQN_Agent_model = "./models/dqn_CartPole-v0_weights.h5f"
-Duelling_DQN_Agent_model = "./models/duel_dqn_CartPole-v0_weights.h5f"
+DQN_Agent_model = "./expert_models/dqn_CartPole-v0_weights.h5f"
+Duelling_DQN_Agent_model = "./expert_models/duel_dqn_CartPole-v0_weights.h5f"
 OBS_FILE_PATH = "./expert_data/obs.npy"
 ACT_FILE_PATH = "./expert_data/act.npy"
 
@@ -12,8 +12,8 @@ ENV_NAME     = "CartPole-v0"
 OBSERVATION_SPACE = (4,) # for CartPole-v0
 NB_ACTIONS = 2           # for CartPole-v0
 AGENT_NAME   = "DQN" # In training, this outperforms over Duelling DQN for this simple CartPole task... curious..
-NUM_ROLLOUTS = 20    # Number of expert roll outs
-RENDER       = True  # if you want to see the expert's performance
+NUM_ROLLOUTS = 1000    # Number of expert roll outs
+RENDER       = False  # if you want to see the expert's performance
 
 
 def expert_play(agent, env):

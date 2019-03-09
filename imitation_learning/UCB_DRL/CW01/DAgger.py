@@ -9,9 +9,9 @@ from run_expert import expert_play, OBS_FILE_PATH, ACT_FILE_PATH, ENV_NAME
 
 OBSERVATION_SPACE = (4,) # for CartPole-v0
 NB_ACTIONS = 2           # for CartPole-v0
-EPOCHS = 50
+EPOCHS = 5
 BATCH_SIZE = 32
-NUM_EPISODES = 100
+NUM_EPISODES = 5
 
 def create_model():
   """
@@ -63,14 +63,33 @@ def train(X, Y, model):
     trained model
   """
   model.fit(X, Y, epochs=EPOCHS, batch_size=BATCH_SIZE)
-  model.save_weights("./weights/weights.h5")
-  model.load_weights("./weights/weights.h5")
+  model.save_weights("./weights/DAgger_weights.h5")
+  model.load_weights("./weights/DAgger_weights.h5")
   return model
 
-def play(model, env, type_policy="deterministic"):
+def prep_dataset(observations, actions):
   """
-  Let a model play with the game(OpenAI env)
-  For now, we only aggregate rewards in a episode and print a score in a episode
+  Reshape and format the training dataset
+
+  Args:
+    observations: a list of observations in an episode
+    actions:  a list of actions in an episode
+
+  Returns:
+    X: Observations of the game
+    Y: Actions
+  """
+  X = np.array(observations)
+  X = np.reshape(X, (X.shape[0], 1, X.shape[1]))
+  Y = np.array(actions)
+  Y = np_utils.to_categorical(Y)
+  return X, Y
+
+def DAgger(model, env, type_policy="deterministic"):
+  """
+  This is the implemnetation of DAgger algorithm.
+  While the agent plays with the environmen, it remembers the encountered states and actions in a single episode
+  Then when an episode ends, it will update the model with the collected data
 
   Args:
     model: Keras trained model
@@ -84,6 +103,7 @@ def play(model, env, type_policy="deterministic"):
     observation = env.reset()
     env.render()
     done = False
+    observations, actions = list(), list()
     while not done:
       # predict the action based on the curret state
       action = model.predict(observation.reshape(1,1,4))[0]
@@ -98,9 +118,14 @@ def play(model, env, type_policy="deterministic"):
       observation, reward, done, info = env.step(action)
       rewards += reward
 
+      observations.append(observation)
+      actions.append(action)
+
       if done:
         print("Score: ", rewards)
         rewards = 0
+        X, Y = prep_dataset(observations, actions)
+        model = train(X, Y, model)
         break
 
 def random_play(env):
@@ -120,7 +145,7 @@ def random_play(env):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_weights', type=str, default="./weights/weights.h5")
+    parser.add_argument('--model_weights', type=str, default="./weights/DAgger_weights.h5")
     parser.add_argument('--type_policy', type=str, default="deterministic")
     parser.add_argument('--test', action="store_true")
     parser.add_argument('--random', action="store_true")
@@ -129,12 +154,12 @@ if __name__ == '__main__':
 
     if args.test:
       model = create_model()
-      model.load_weights("./weights/weights.h5")
-      play(model, env, args.type_policy)
+      model.load_weights("./weights/DAgger_weights.h5")
+      DAgger(model, env, args.type_policy)
     elif args.random:
       random_play(env)
     else:
       model = create_model()
       X, Y = load_dataset()
       model = train(X, Y, model)
-      play(model, env, args.type_policy)
+      DAgger(model, env, args.type_policy)
