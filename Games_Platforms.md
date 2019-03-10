@@ -8,7 +8,7 @@ https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8632747
 
 
 
-## Notes
+## Game Descriptions
 
 ### Arcade Games
 
@@ -58,3 +58,10 @@ Popular sports games are typically based on team-based sports such as soccer, ba
 
 ### Text Adventure Games
 
+A classic text adventure game is a form of interactive fiction where players are given descriptions and instructions in text, rather than graphics, and interact with the storyline through text-based commands. These games typically implement one of three text-based interfaces: parser-based, choice-Based, and hyperlink-based. Unlike some other game genres, like arcade games, text adventure games have not had a standard benchmark of games that everyone can compare against. This makes a lot of results hard to directly compare.
+
+- Infocom’s Z-Machine game engine
+
+### OpenAI Gym & Universe
+
+OpenAI Gym is a large platform for comparing reinforcement learning algorithms with a single interface to a suite of different environments including ALE, GVG-AI, MuJoCo, Malmo, ViZDoom and more.
