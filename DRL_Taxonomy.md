@@ -106,3 +106,51 @@ https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8632747&tag=1
   - The distribution is divided into a so-called set of atoms, which determines the granularity of the distribution.
 
     <img src="images/distributional_DQN.png" width=60%>
+
+- [NoisyNets](https://arxiv.org/pdf/1706.10295.pdf)
+
+  - noise is added to the network parameters and a unique noise level for each parameter is learned using gradient descent, in contrast to the conventional epsilon-greedy exploration, NoisyNets use a noisy version of the policy to ensure exploration
+
+    <img src="images/NoisyNets.png" width=60%>
+
+- [Rainbow](https://arxiv.org/pdf/1710.02298.pdf)
+
+  - combines several DQN enhancements: Double DQN, Prioritized Replay, Dueling DQN, Distributional DQN, and NoisyNets, and achieved a mean score higher than any of the enhancements individually
+
+    <img src="images/Rainbow.png" width=60%>
+
+- Evolution Strategies (ES)
+  - are black-box optimization algorithms that rely on parameter-exploration through stochastic noise. 720 CPUs were used for one hour whereafter ES managed to outperform A3C (which ran for 4 days) in 23 out of 51 games
+
+- [Deep GA](https://arxiv.org/pdf/1712.06567.pdf)
+  - A simple genetic algorithm with a Gaussian noise mutation operator evolves the parameters of a deep neural network and can achieve surprisingly good scores across several Atari games
+
+- [UCTtoClassification](http://papers.nips.cc/paper/5421-deep-learning-for-real-time-atari-game-play-using-offline-monte-carlo-tree-search-planning.pdf)
+
+  - a slow planning agent was applied offline, using Monte-Carlo Tree Search, to generate data for training a CNN via multinomial classification. And it was shown to outperform DQN.
+
+- [Policy Distillation](https://arxiv.org/pdf/1511.06295.pdf)
+
+  - for transferring one or more action policies from Q-networks to an untrained network.
+
+  - The method has multiple advantages: network size can be compressed by up to 15 times without degradation in performance; multiple expert policies can be combined into a single multi-task policy that can outperform the original experts; and finally it can be applied as a real-time, online learning process by continually distilling the best policy to a target network, thus efficiently tracking the evolving Q-learning policy.
+
+    <img src="images/Policy_Distillation.png" width=80%>
+
+- [Actor-Mimic](https://arxiv.org/pdf/1511.06342.pdf)
+  - exploits the use of deep reinforcement learning and model compression techniques to train a single policy network that learns how to act in a set of distinct tasks by using the guidance of several expert teachers
+
+- [Hybrid Reward Architecture (HRA)](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8632747&tag=1)
+
+  - The training objective provides feedback to the agent while the performance objective specifies the target behavior. Often, a single reward function takes both roles, but for some games, the performance objective does not guide the training sufficiently
+
+  - The Hybrid Reward Architecture (HRA) splits the reward function into n different reward functions, where each of them are assigned a separate learning agent
+
+    <img src="images/HRA.png" width=80%>
+
+
+
+### Montezuma’s Revenge
+
+
+
