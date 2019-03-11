@@ -221,3 +221,120 @@ Most of the algorithms introduced above have failed to learn the sparse feedback
   - a policy gradient method that implements both experience replay and a separate target network and was used to train a CNN endto-end in TORCS from images
 
     <img src="images/DDPG.png" width=80%>
+
+### First-Person Shooters
+
+- [ViZDoom](https://arxiv.org/pdf/1605.02097.pdf)
+
+  - demonstrated that a CNN with maxpooling and fully connected layers trained with DQN canachieve human-like behaviors in basic scenarios. In the Visual Doom AI Competition 2016
+
+- [Actor-Critic (A3C) with Curriculum Learning](https://openreview.net/pdf?id=Hk3mPK5gg)
+
+  - Reward shaping tackled the problem of sparse and delayed rewards, giving artificial positive rewards for picking up items and negative rewards for using ammunition and losing health.
+
+  - Curriculum learning attempts to speed up learning by training on a set of progressively harder environments
+
+    <img src="images/A3C_Curriculum.png" width=80%>
+
+    
+
+- [SLAM-Augmented Deep Reinforcement Learning](https://arxiv.org/pdf/1612.00380.pdf)
+  - Position inference and object mapping from pixels and depth-buffers using Simultaneous Localization and Mapping (SLAM) also improve DQN in Doom
+  - they approached the issue that partial observability of the environment using the SLAM generated map for an agent to be aware where it is right now.
+
+- [Direct Future Prediction (DFP)](https://arxiv.org/pdf/1611.01779.pdf)
+
+  - The architecture used in DFP has three streams: one for the screen pixels, one for lower-dimensional measurements describing the agent’s current state and one for describing the agent’s goal, which is a linear combination of prioritized measurements.
+
+  - DFP collects experiences in a memory and is trained with supervised learning techniques to predict the future measurements based on the current state, goal and selected action
+
+  - During training, actions are selected that yield the best-predicted outcome, based on the current goal. This method can be trained on various goals and generalizes to unseen goals at test time.
+
+    <img src="images/DFP.png" width=80%>
+
+- [Navigation with RL(Nav A3C)](https://arxiv.org/pdf/1611.03673.pdf)
+
+  - they formulate the navigation question as a reinforcement learning problem and show that data efficiency and task performance can be dramatically improved by relying on additional auxiliary tasks leveraging multi-modal sensory inputs
+
+    <img src="images/Nav_A3C.png" width=80%>
+
+- Distral (Distill & transfer learning)
+
+  - trains several worker policies (one for each task) concurrently and shares a distilled policy that captures common behaviour across tasks
+
+  - The worker policies are regularized to stay close to the shared policy which will be the centroid of the worker policies. Distral was applied to DeepMind Lab.
+
+    <img src="images/Distral1.png" width=80%>
+
+<img src="images/Distral2.png" width=80%>
+
+- [Intrinsic Curiosity Module (ICM)](https://pathak22.github.io/noreward-rl/resources/icml17.pdf)
+
+  - curiosity can serve as an intrinsic reward signal to enable the agent to explore its environment and learn skills that might be useful later in its life.
+
+  - they formulate curiosity as the error in an agent’s ability to predict the consequence of its own actions in a visual  feature space learned by a self-supervised inverse dynamics model.
+
+    <img src="images/ICM.png" width=80%>
+
+### Open-World Games
+
+- [H-DRLN](https://arxiv.org/pdf/1604.07255.pdf)
+
+  - architecture implements a lifelong learning framework, which is shown to be able to transfer knowledge between simple tasks in Minecraft such as navigation, item collection, and placement tasks
+
+    <img src="images/HDRLN.png" width=80%>
+
+- [Teacher-Student Curriculum Learning (TSCL)](https://arxiv.org/pdf/1707.00183.pdf)
+
+  - a framework for automatic curriculum learning, where the Student tries to learn a complex task and the Teacher automatically chooses subtasks from a given set for the Student to train on.
+
+  - framework incorporates a teacher that prioritizes tasks wherein the student’s performance is either increasing (learning) or decreasing (forgetting)
+
+    <img src="images/TSCL.png" width=80%>
+
+### Real-Time Strategy Games
+
+- players have to control multiple agents simultaneously in real-time on a partially observable map. 
+- RTS games have no in-game scoring and thus the reward is determined by who wins the game.
+
+
+
+- [Monte Carlo Tree Search(MCTS)](https://skatgame.net/mburo/ps/cig16-eval.pdf)
+
+  - they present a CNN for RTS game state evaluation that goes beyond commonly used material based evaluations by also taking spatial relations between units into account.
+
+    <img src="images/MCTS.png" width=80%>
+
+
+
+- [Multi-agent credit assignment problem](https://papers.nips.cc/paper/2476-all-learning-is-local-multi-agent-learning-in-global-reward-games.pdf)
+  - States and actions are often described locally relative to units, which is extracted from the game engine. If agents are trained individually it is difficult to know which agents contributed to the global reward 
+
+So we will look at some MARL(Multi-agent RL) approaches
+
+- [Independent Q-learning (IQL)](http://web.media.mit.edu/~cynthiab/Readings/tan-MAS-reinfLearn.pdf)
+  - Given the same number of reinforcement learning agents will cooperative agents outperform independent agents who do not communicate during learning?
+  - IQL simplifies the multi-agent RL problem by controlling units individually while treating other agents as if they were part of the environment
+
+- Multiagent Bidirectionally-Coordinated Network (BiCNet)
+
+  - implements a vectorized actor-critic framework based on a bi-directional RNN, with one dimension for every agent, and outputs a sequence of actions
+
+  - BiCNet can handle different types of combats with arbitrary numbers of AI agents for both sides. Our analysis demonstrates that without any supervisions such as human demonstrations or labelled data, BiCNet could learn various types of advanced coordination strategies that have been commonly used by experienced game players
+
+    <img src="images/BiCNet.png" width=60%>
+
+- [Counterfactual multi-agent (COMA)](https://arxiv.org/pdf/1705.08926.pdf)
+
+  - policy gradients is an actor-critic method with a centralized critic and decentralized actors that address the multi-agent credit assignment problem with a counterfactual baseline computed by the critic network
+
+    <img src="images/COMA.png" width=60%>
+
+- [Convolutional Neural Network Fitted Q-Learning](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8426160)
+
+  - trained with Double DQN for build-order planning in StarCraft II and was able to win against medium level scripted bots on small maps
+
+    <img src="images/NNFQ.png" width=60%>
+
+### Text Adventure Games
+
