@@ -150,7 +150,74 @@ https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8632747&tag=1
 
 
 
-### Montezuma’s Revenge
+### Montezuma’s Revenge(sparse feedback problem)
 
+Most of the algorithms introduced above have failed to learn the sparse feedback through the game. For instance, DQN fails to obtain any reward in this game (receiving a score of 0) and Gorila achieves an average score of just 4.2, whereas a human expert scored 4,367. So, it is clear that the methods presented so far are unable to deal with environments with such sparse rewards.
 
+- [Hierarchical-DQN (h-DQN) ](https://arxiv.org/pdf/1604.06057.pdf)
 
+  - A top-level value function learns a policy over intrinsic goals, and a lower-level function learns a policy over atomic actions to satisfy the given goals. 
+
+  - it operates on two temporal scales inside, one is the controller which leans a policy over action that satisfy goals chosen by a higher-level Q-value function, on the other hand, we have the meta-controller which learns a policy over intrinsic goals.
+
+    <img src="images/h-DQN.png" width=80%>
+
+    <img src="images/h-DQN2.png" width=60%>
+
+- [DQN-CTS(DQN-Context Tree Switching)](https://arxiv.org/pdf/1606.01868.pdf)
+  - Pseudo-counts have been used to provide intrinsic motivation in the form of exploration bonuses when unexpected pixel configurations are observed and can be derived from CTS density models
+  - they focus on the problem of exploration in non-tabular reinforcement learning
+  - they use density models to measure uncertainty, and propose a novel algorithm for deriving a pseudo-count from an arbitrary density model. 
+  - [Skip Context Tree Switching: Bellemare et al., 2014](https://pdfs.semanticscholar.org/f6ca/9c148417d4167ba8b72f185a35649dc4b446.pdf)
+    - In this paper we show how to generalize this technique to the class of K-skip prediction suffix trees. 
+- [DQN-PixelCNN](http://proceedings.mlr.press/v70/ostrovski17a/ostrovski17a.pdf)
+  - they combine PixelCNN pseudo-counts with different agent architectures to dramatically improve the state of the art on several hard Atari games
+
+- [Ape-X DQN](https://openreview.net/pdf?id=H1Dy---0Z)
+  - a distributed DQN architecture similar to Gorila
+
+- [Deep Qlearning from Demonstrations (DQfD) ](https://arxiv.org/pdf/1704.03732.pdf)
+
+  - draw samples from an experience replay buffer that is initialized with demonstration data from a human expert and is superior to previous methods on 11 Atari games with sparse rewards
+
+    <img src="images/DQfD.png" width=60%>
+
+- [Ape-X DQfD](https://arxiv.org/pdf/1805.11593.pdf)
+
+  - combines the distributed architecture from Ape-X and the learning algorithm from DQfD using expert data and was shown to outperform all previous methods in ALE as well as beating level 1 in Montezuma’s Revenge
+
+    <img src="images/Ape-X DQfD.png" width=80%>
+
+- [Natural Language Guided Reinforcement Learning](https://arxiv.org/pdf/1704.05539.pdf)
+
+  - The agent uses a multi-modal embedding between environment observations and natural language to self-monitor progress through a list of English instructions, granting itself reward for completing instructions in addition to increasing the game score
+
+  - Instructions were linked to positions in rooms and agents were rewarded when they reached those locations
+
+  - <img src="images/Natural Language Guided Reinforcement Learning1.png" width=80%>
+
+    <img src="images/Natural Language Guided Reinforcement Learning2.png" width=80%>
+
+- [language acquisition in virtual environment](https://arxiv.org/pdf/1703.09831.pdf)
+
+  - how an agent can execute text-based commands in a 2D maze-like environment called XWORLD, such as walking to and picking up objects, after having learned a teacher’s language
+
+  - An RNN-based language module is connected to a CNN-based perception module. These two modules were then connected to an action selection module and a recognition module that learns the teacher’s language in a question answering process.
+
+    <img src="images/language_acquisition.png" width=80%>
+
+    
+
+### Racing Games
+
+- [Direct Perception](http://openaccess.thecvf.com/content_iccv_2015/papers/Chen_DeepDriving_Learning_Affordance_ICCV_2015_paper.pdf)
+  - a CNN learns to map from images to meaningful affordance indicators, such as the car angle and distance to lane markings, from which a simple controller can make decisions.
+  - Direct perception was trained on recordings of 12 hours of human driving in TORCS and the trained system was able to drive in very diverse environments. Amazingly, the network was also able to generalize to real images.
+- [Deterministic Policy Gradient (DPG)](http://www0.cs.ucl.ac.uk/staff/d.silver/web/Publications_files/deterministic-policy-gradients.pdf)
+  - directly differentiate the policy and try approximate it by neural network
+
+- [Deep DPG (DDPG)](https://arxiv.org/pdf/1509.02971.pdf)
+
+  - a policy gradient method that implements both experience replay and a separate target network and was used to train a CNN endto-end in TORCS from images
+
+    <img src="images/DDPG.png" width=80%>
