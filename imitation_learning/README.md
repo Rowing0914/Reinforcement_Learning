@@ -6,7 +6,7 @@ This is the repo for storing the information regarding Imitation Learning.
 
 ## Lectures
 
-1. [CS 294-112 at UC Berkeley Deep Reinforcement Learning](http://rail.eecs.berkeley.edu/deeprlcourse/)
+1. [CS 294-112 at UC Berkeley Deep Reinforcement Learning](http://rail.eecs.berkeley.edu/deeprlcourse/) ...not good obviously
 2. [IMITATION LEARNING TUTORIAL at ICML 2018](https://sites.google.com/view/icml2018-imitation-learning/)
 3. CMU 10703: Deep Reinforcement Learning and Control
   - [Lecture 14: Imitation Learning I](https://katefvision.github.io/katefSlides/immitation_learning_I_katef.pdf)
