@@ -7,6 +7,10 @@ Description:
   In the paper, Figure 1 describes the uniformly random agent linearly increases the number of updates needed, whrereas Q-learnign agent does not.
   So to reproduce the result, I have implemented the thing.
 
+Comments:
+  Althoug it is somehow working, because the prioritised_sample in Agent class sort the replay memory with regard to the reward, it always returns
+  the state,action pairs which can arrive at the terminal state, hence it affects the subsequent update of function approximation. 
+  Therefore, compared to NONPER agent, the PER agent cannot outperform because simply saying it only updates the weight given similar samples
 """
 
 import numpy as np
