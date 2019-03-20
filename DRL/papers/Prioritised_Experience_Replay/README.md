@@ -35,8 +35,6 @@ In prior work, experience transitions were uniformly sampled from a replay memor
 - it is sensitive to noise spikes (e.g. when rewards are stochastic), which can be exacerbated by bootstrapping, where approximation errors appear as another source of noise
 - the greedy prioritisation focuses on a small subset of the experience: errors shrink slowly, especially when using function approximation, meaning that the initially high error transitions get replayed frequently
 
-
-
 ### Proposition
 
 To overcome the issues above, they develop a framework which is a stochastic sampling method that interpolates between pure greedy prioritisation and uniform random sampling, so as to replay important transitions more frequently, and therefore learn more efficiently. 

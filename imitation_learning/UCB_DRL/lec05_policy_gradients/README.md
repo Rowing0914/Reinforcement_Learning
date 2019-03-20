@@ -90,6 +90,8 @@ Var[x] = E[x^2] - E[x]^2 \\
 
 Var = E_{\tau \sim \pi_{\theta}(\tau)} \Big[ \big( \nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau) - b) \big)^2 \Big] - E_{\tau \sim \pi_{\theta}(\tau)} \big[ \nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau) - b) \big]^2 \\
 
+E_{\tau \sim \pi_{\theta}(\tau)} \big[ \nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau) - b) \big]^2 = \Big( E_{\tau \sim \pi_{\theta}(\tau)} \big[ \nabla_{\theta} \log \pi_{\theta}(\tau)r(\tau)\big] - E_{\tau \sim \pi_{\theta}(\tau)} \big[\nabla_{\theta} \log \pi_{\theta}(\tau) \times b \big] \Big)^2 \\
+
 \text{since a baseline in expectation is 0, we will rewrite the equation as follows;} \\
 
 Var = E_{\tau \sim \pi_{\theta}(\tau)} \Big[ \big( \nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau) - b) \big)^2 \Big] - E_{\tau \sim \pi_{\theta}(\tau)} \big[ \nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau)) \big]^2 \\
