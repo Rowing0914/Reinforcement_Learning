@@ -1,3 +1,14 @@
+"""
+Author: Norio Kosaka
+E-mail: kosakaboat@gmail.com
+Date: 20 Mar 2019
+Description:
+  This is the rough implementation of the Q-learnig agent on the Blind Cliffwalk environment.
+  In the paper, Figure 1 describes the uniformly random agent linearly increases the number of updates needed, whrereas Q-learnign agent does not.
+  So to confirm, if it is true, I have implemented the thing.
+
+"""
+
 import numpy as np
 from collections import defaultdict
 
