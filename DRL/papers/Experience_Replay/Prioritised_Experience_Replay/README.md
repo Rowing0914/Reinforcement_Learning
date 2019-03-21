@@ -58,16 +58,40 @@ the graphs below indicate that the stochastic prioritisation can decrease the re
 
 Prioritised replay introduces bias because it changes this distribution in an uncontrolled fashion, and therefore changes the solution that the estimates will converge to (even if the policy and state distribution are fixed). so we can correct the bias by using **Weighted Importance Sampling** (Mahmood et al., 2014) as follows;
 $$
-w_i = \big( \frac{1}{N} \cdot \frac{1}{P(i)} \big)^{\beta}
+w_i = \big( \frac{1}{N} \cdot \frac{1}{P(i)} \big)^{\beta} \\
+\text{normalisation }w_i = \frac{w_i}{\max_i w_i}
 $$
+
+
+
+## Algorithm
+
+<img src="images/algo.png">
+
 
 
 ### Result
 
+#### Trick they used
 
+- they used DQN and Double-DQN as baselines
+- Replay size: $10^6$
+- Mini-batch size : 32
+- Mini-batch update frequency: for each 4 new trainsitions
+- TD-errors are clipped to fall within [-1, 1]
+- Rank-Based : $\alpha$: 0.7,  $\beta_0$ : 0.5   *These choices are trading off aggressiveness with robustness
+- Proportional-Based : $\alpha$: 0.6,  $\beta_0$ : 0.4    *These choices are trading off aggressiveness with robustness
+- they additionally examined on new games, such as River Raid, Seaquest and Surround to a human level for the first time
 
-### Contributions of the paper
+#### Metrics
 
+- Quality of the best policy
+- Learning speed
 
+### Human Starts(Nair et al., 2015)
 
-### My questions
+It aims to measure how well the agent generalizes to states it may not have trained on. To that end, we have introduced 100 random starting points that were sampled from a human professional’s game play for each game. To evaluate an agent, we ran it from each of the 100 starting points until the end of the game or until a total of 108000 frames (equivalent to 30 minutes) were played counting  the frames the human played to reach the starting point. The total score accumulated only by the agent (not considering any points won by the human player) were averaged to obtain the evaluation score.
+
+### Conclusion
+
+In the head-to-head comparison between rank-based prioritization and proportional prioritization, we expected the rank-based variant to be more robust because it is not affected by outliers nor error magnitudes. Furthermore, its heavy-tail property also guarantees that samples will be diverse, and the stratified sampling from partitions of different errors will keep the total minibatch gradient at a stable magnitude throughout training
