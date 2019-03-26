@@ -8,7 +8,7 @@ import sys
 if "../" not in sys.path:
     sys.path.append("../")
 
-from utils.envs.windy_gridworld import WindyGridworldEnv
+from libs.envs.windy_gridworld import WindyGridworldEnv
 
 def make_epsilon_greedy_policy(Q, epsilon, nA):
 	def policy(observation):

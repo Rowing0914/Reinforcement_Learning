@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77d5c33c-8b3c-4235-af18-36c761c36d67" name="Default Changelist" comment="" />
+    <list default="true" id="77d5c33c-8b3c-4235-af18-36c761c36d67" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch6_TD/double_q_learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/double_q_learning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch6_TD/expected_sarsa.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/expected_sarsa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch6_TD/one_step_TD.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/one_step_TD.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch6_TD/q_learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/q_learning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch6_TD/sarsa.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/sarsa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/envs/blackjack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/envs/cliff_walking.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/envs/grid_world.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/envs/grid_world_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/envs/windy_gridworld.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/plot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../safe_reinforcement_learning/Safe RL.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/../../safe_reinforcement_learning/Safe RL.xmind" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,10 +28,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ch6_TD/double_q_learning.py">
+        <entry file="file://$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="24" column="82" selection-start-line="24" selection-start-column="82" selection-end-line="24" selection-end-column="82" />
+            <state relative-caret-position="-2014">
+              <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE_keras.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2126">
+              <caret line="3" column="66" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,14 +76,16 @@
         <option value="$PROJECT_DIR$/ch6_TD/expected_sarsa.py" />
         <option value="$PROJECT_DIR$/ch5_MC/off_policy_MC.py" />
         <option value="$PROJECT_DIR$/ch6_TD/double_q_learning.py" />
+        <option value="$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py" />
+        <option value="$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE_keras.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1954" />
+    <option name="x" value="1920" />
     <option name="y" value="-4" />
-    <option name="width" value="1918" />
-    <option name="height" value="1076" />
+    <option name="width" value="1920" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -69,38 +100,13 @@
         <subPane>
           <expand>
             <path>
-              <item name="Reinforcement_Learning_An_Introduction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reinforcement_Learning_An_Introduction" type="462c0819:PsiDirectoryNode" />
+              <item name="Sutton_RL_Intro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sutton_RL_Intro" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Reinforcement_Learning_An_Introduction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reinforcement_Learning_An_Introduction" type="462c0819:PsiDirectoryNode" />
-              <item name="ch2_Bandit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reinforcement_Learning_An_Introduction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reinforcement_Learning_An_Introduction" type="462c0819:PsiDirectoryNode" />
-              <item name="ch3_MDP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reinforcement_Learning_An_Introduction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reinforcement_Learning_An_Introduction" type="462c0819:PsiDirectoryNode" />
-              <item name="ch4_DP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reinforcement_Learning_An_Introduction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reinforcement_Learning_An_Introduction" type="462c0819:PsiDirectoryNode" />
-              <item name="ch5_MC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reinforcement_Learning_An_Introduction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reinforcement_Learning_An_Introduction" type="462c0819:PsiDirectoryNode" />
-              <item name="ch6_TD" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reinforcement_Learning_An_Introduction" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reinforcement_Learning_An_Introduction" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="Sutton_RL_Intro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sutton_RL_Intro" type="462c0819:PsiDirectoryNode" />
+              <item name="ch13_Policy_Gradient" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -130,7 +136,49 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.double_q_learning">
+  <component name="RunManager" selected="Python.REINFORCE_keras">
+    <configuration name="REINFORCE" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Reinforcement_Learning_An_Introduction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ch13_Policy_Gradient" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="REINFORCE_keras" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Reinforcement_Learning_An_Introduction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ch13_Policy_Gradient" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE_keras.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="double_q_learning" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Reinforcement_Learning_An_Introduction" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -194,55 +242,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sarsa" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Reinforcement_Learning_An_Introduction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ch6_TD" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ch6_TD/sarsa.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Reinforcement_Learning_An_Introduction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ch6_TD" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ch6_TD/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.REINFORCE_keras" />
+        <item itemvalue="Python.REINFORCE" />
         <item itemvalue="Python.double_q_learning" />
         <item itemvalue="Python.expected_sarsa" />
         <item itemvalue="Python.q_learning" />
-        <item itemvalue="Python.sarsa" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -260,25 +266,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="-11" width="1922" height="1092" extended-state="6" />
+    <frame x="1920" y="-4" width="1920" height="1084" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4979592" visible="true" weight="0.079166666" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4979592" weight="0.111979164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5020408" side_tool="true" weight="0.08958333" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Python Console" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25918368" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37135416" />
+      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Message" order="7" />
+      <window_info anchor="bottom" id="Find" order="8" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Run" order="3" weight="0.259375" />
-      <window_info anchor="right" id="Debug" order="4" weight="0.37135416" />
     </layout>
   </component>
   <component name="XDebuggerManager">
@@ -310,13 +317,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/envs/windy_gridworld.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/envs/windy_gridworld.py" />
     <entry file="file://$PROJECT_DIR$/ch6_TD/test.py" />
     <entry file="file:///usr/local/lib/python3.6/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -343,16 +344,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/plot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="25" selection-start-line="25" selection-start-column="2" selection-end-line="55" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/plot.py" />
     <entry file="file://$PROJECT_DIR$/ch5_MC/first_visit_MC_ES.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-164" />
@@ -389,8 +381,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="24" column="82" selection-start-line="24" selection-start-column="82" selection-end-line="24" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE_keras.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2126">
+          <caret line="3" column="66" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
           <folding>
-            <element signature="e#86#121#0" expanded="true" />
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2014">
+          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

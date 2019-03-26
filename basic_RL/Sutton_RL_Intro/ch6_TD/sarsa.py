@@ -8,8 +8,8 @@ import itertools
 if "../" not in sys.path:
     sys.path.append("../")
 
-from utils.envs.windy_gridworld import WindyGridworldEnv
-from utils.plot import plot_result
+from libs.envs.windy_gridworld import WindyGridworldEnv
+from libs.plot import plot_result
 
 
 def make_epsilon_greedy_policy(Q, epsilon, nA):
@@ -31,6 +31,7 @@ def Sarsa(env, Q, alpha=0.5, discount_factor=1.0, epsilon=0.1, num_episodes=1000
         action = np.random.choice(np.arange(env.nA), p=policy(state))
         # generate an episode
         for t in itertools.count():
+            env.render()
             next_state, reward, done, _ = env.step(action)
             next_action = np.random.choice(np.arange(env.nA), p=policy(next_state))
             Q[state][action] += alpha * (reward + discount_factor * Q[next_state][next_action] - Q[state][action])

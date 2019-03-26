@@ -8,8 +8,8 @@ import itertools
 if "../" not in sys.path:
     sys.path.append("../")
 
-from utils.envs.windy_gridworld import WindyGridworldEnv
-from utils.plot import plot_result, compare_plots
+from libs.envs.windy_gridworld import WindyGridworldEnv
+from libs.plot import plot_result, compare_plots
 from ch6_TD.sarsa import Sarsa
 from ch6_TD.q_learning import Q_learning
 

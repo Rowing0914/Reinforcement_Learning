@@ -7,9 +7,9 @@ import tensorflow as tf
 import collections
 
 if "../" not in sys.path:
-  sys.path.append("../utils/envs")
+  sys.path.append("../")
 
-from cliff_walking import CliffWalkingEnv
+from libs.envs.cliff_walking import CliffWalkingEnv
 
 env = CliffWalkingEnv()
 
@@ -64,6 +64,7 @@ class ValueEstimator():
 
             # This is just table lookup estimator
             state_one_hot = tf.one_hot(self.state, int(env.observation_space.n))
+            print("CHCKER: ", tf.expand_dims(state_one_hot, 0))
             self.output_layer = tf.contrib.layers.fully_connected(
                 inputs=tf.expand_dims(state_one_hot, 0),
                 num_outputs=1,
