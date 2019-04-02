@@ -130,7 +130,7 @@ def reinforce(env, estimator_policy, estimator_value, num_episodes, discount_fac
             
             # Print out which step we're on, useful for debugging.
             print("\rStep {} @ Episode {}/{} ({})".format(t, i_episode + 1, num_episodes, rewards), end="")
-            # sys.stdout.flush()
+            sys.stdout.flush()
 
             if done:
                 rewards_log.append(rewards)
