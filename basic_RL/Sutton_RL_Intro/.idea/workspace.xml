@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77d5c33c-8b3c-4235-af18-36c761c36d67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch6_TD/double_q_learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/double_q_learning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch6_TD/expected_sarsa.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/expected_sarsa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch6_TD/one_step_TD.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/one_step_TD.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch6_TD/q_learning.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/q_learning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch6_TD/sarsa.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch6_TD/sarsa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/envs/blackjack.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/envs/cliff_walking.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/envs/grid_world.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/envs/grid_world_2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/envs/windy_gridworld.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/plot.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../safe_reinforcement_learning/Safe RL.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/../../safe_reinforcement_learning/Safe RL.xmind" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +18,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2014">
+            <state relative-caret-position="380">
               <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -42,11 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE_keras.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2126">
-              <caret line="3" column="66" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="817">
+              <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -82,10 +67,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="-4" />
-    <option name="width" value="1920" />
-    <option name="height" value="1084" />
+    <option name="x" value="240" />
+    <option name="y" value="158" />
+    <option name="width" value="1440" />
+    <option name="height" value="791" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -94,29 +79,12 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Sutton_RL_Intro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sutton_RL_Intro" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sutton_RL_Intro" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sutton_RL_Intro" type="462c0819:PsiDirectoryNode" />
-              <item name="ch13_Policy_Gradient" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../drl" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -266,8 +234,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-4" width="1920" height="1084" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="-1" width="1922" height="1082" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4979592" weight="0.111979164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -386,17 +353,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE_keras.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2126">
-          <caret line="3" column="66" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="817">
+          <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ch13_Policy_Gradient/REINFORCE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2014">
+        <state relative-caret-position="380">
           <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
