@@ -8,7 +8,9 @@ Deterministic Policy Gradient Algorithms by D.Silver et al., IMCL2014
 
 - The stochastic policy gradients may require more samples especially if the action space has many dimensions. Yet to guarantee the exploration of the env, we need the stochasticity of the policy.
 
-
+- Both REINFORCE and the vanilla version of actor-critic method are on-policy: training samples are collected according to the target policy — the very same policy that we try to optimize for. Off policy methods, however, result in several additional advantages:
+  - The off-policy approach does not require full trajectories and can reuse any past episodes ([“experience replay”](https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html#deep-q-network)) for much better sample efficiency.
+  - The sample collection follows a behavior policy different from the target policy, bringing better [exploration](https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html#exploration-exploitation-dilemma).
 
 ## Proposition
 
@@ -28,3 +30,6 @@ Deterministic Policy Gradient Algorithms by D.Silver et al., IMCL2014
 
 
 
+## Reference
+
+- <https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.html>
