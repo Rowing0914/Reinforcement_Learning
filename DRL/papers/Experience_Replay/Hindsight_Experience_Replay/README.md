@@ -1,6 +1,8 @@
 ## Main Paper
 
-Hindsight Experience Replay by M.Andrychowicz et al., NIPS 2017
+- [Hindsight Experience Replay by M.Andrychowicz et al., NIPS 2017](<https://arxiv.org/pdf/1707.01495.pdf>)
+
+- project page: <https://sites.google.com/site/hindsightexperiencereplay/>
 
 
 
@@ -22,21 +24,25 @@ The pivotal idea behind HER is to replay each episode with a different goal than
 
 ### Prior work
 
-- DQN
-- DPG
-- DDPG
+- [DQN]()
+- [DPG](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/DRL/papers/DPG)
+- [DDPG](https://github.com/Rowing0914/Reinforcement_Learning/tree/master/DRL/papers/DDPG)
 - UFA
 
 ### Proposition
 
 
+
+
 ## Algorithm
 
-
+![](/home/noio0925/Desktop/research/Reinforcement_Learning/DRL/papers/Experience_Replay/Hindsight_Experience_Replay/images/algorithm.png)
 
 
 
 ### Result
+
+![](/home/noio0925/Desktop/research/Reinforcement_Learning/DRL/papers/Experience_Replay/Hindsight_Experience_Replay/images/experiemnts.png)
 
 #### Trick they used
 
