@@ -33,14 +33,17 @@ The pivotal idea behind HER is to replay each episode with a different goal than
 
 
 
-
 ## Algorithm
+
+The idea behind Hindsight Experience Replay (HER) is very simple: after experiencing some episode
+$s_0, s_1, . . . , s_T$ we store in the replay buffer every transition $s_t \rightarrow s_{t+1}$ not only with the original
+goal used for this episode but also with a subset of other goals.
 
 ![](/home/noio0925/Desktop/research/Reinforcement_Learning/DRL/papers/Experience_Replay/Hindsight_Experience_Replay/images/algorithm.png)
 
 
 
-### Result
+### Experiments
 
 ![](/home/noio0925/Desktop/research/Reinforcement_Learning/DRL/papers/Experience_Replay/Hindsight_Experience_Replay/images/experiemnts.png)
 
@@ -49,6 +52,14 @@ The pivotal idea behind HER is to replay each episode with a different goal than
 
 
 #### Metrics
+
+
+
+
+
+## Result
+
+![](/home/noio0925/Desktop/research/Reinforcement_Learning/DRL/papers/Experience_Replay/Hindsight_Experience_Replay/images/result.png)
 
 
 
